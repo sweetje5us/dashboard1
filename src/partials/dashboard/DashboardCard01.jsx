@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import LineChart from '../../charts/LineChart01';
 import { chartAreaGradient } from '../../charts/ChartjsConfig';
 import EditMenu from '../../components/DropdownEditMenu';
+import weatherlogo1 from '../../images/sun.gif';
 
 
 function getRise(a) {
   const name1 = a;
   const [userData, setUserData] = useState([]);
+  let name;
   // fetching api data
   useEffect(() => {
     fetch('https://api.sunrisesunset.io/json?lat=56.271461&lng=57.999168&date=today')
@@ -16,7 +18,11 @@ function getRise(a) {
     
   }, []
 )
-  return (userData[a])
+name=userData[a];
+if (name){
+  return (name)
+}
+  return (name)
 }
 
 
@@ -75,34 +81,25 @@ export const DashboardCard01 = () => {
   
 
   return (  
- <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
-      <div className="px-5 pt-5">
-        <header className="flex justify-between items-start mb-2">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Время</h2>
+ <div className="flex  col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+      <div className="px-5 pt-5 ">
+        <header  className="display:flex flex-col items-start mb-2 margin-left: auto">
+       
+        <img className="align: center" src='https://img.icons8.com/?size=100&id=dzi5TGZpsbP7&format=png&color=000000'></img>
+        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-5">{dayOfWeek} {day} {month}</div>
+          
           {/* Menu button */}
-          <EditMenu align="right" className="relative inline-flex">
-            <li>
-              <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
-                Option 1
-              </Link>
-            </li>
-            <li>
-              <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
-                Option 2
-              </Link>
-            </li>
-            <li>
-              <Link className="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" to="#0">
-                Remove
-              </Link>
-            </li>
-          </EditMenu>
+          
         </header>
-        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">{dayOfWeek} {day} {month}</div>
-        <div className="flex items-start">
-          <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
+
+     
+        <div className="flex items-start items-start mb-2 ">
+        <div className="text-sm font-medium text-white-700 px-1.5 bg-orange-500/20 rounded-full">{getRise('sunrise')}</div>
+          <div className="text-lm text-6xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
           <div className="text-sm font-medium text-white-700 px-1.5 bg-gray-500/20 rounded-full text-align: center">{getRise('sunset')}</div>
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-orange-500/20 rounded-full">{getRise('sunrise')}</div>
+         
+       
+        
           
         </div>
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">уведомление</div>
