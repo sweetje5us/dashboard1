@@ -92,13 +92,21 @@ export const DashboardCard02 = () => {
   return (  
  <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <div className="px-5 pt-5">
-      <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Погода</h2>
+      <div className="text-lm text-7xl font-bold text-gray-800 dark:text-gray-100 mr-2">{getWeather1('temperature_2m')}</div>
       
         <header className="flex justify-between items-start mb-2">
-        <img className="align: center" src={weatherlogo1}></img>
           
           {/* Menu button */}
-          <EditMenu align="right" className="relative inline-flex">
+        </header>
+        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Пермский край, Пермь</div>
+        <div className="flex items-start">
+        
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-blue-500/20 rounded-full">{getWeather2()}%</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-yellow-500/20 rounded-full text-align: center">{getWeather1('wind_speed_10m')} м\с</div>
+          
+          
+        </div>
+        <EditMenu align="right" className="relative inline-flex">
             <li>
               <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
                 Пермь
@@ -115,16 +123,6 @@ export const DashboardCard02 = () => {
               </Link>
             </li>
           </EditMenu>
-        </header>
-        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Пермский край, Пермь</div>
-        <div className="flex items-start">
-          
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-blue-500/20 rounded-full">{getWeather2()}%</div>
-          <div className="text-6xl font-bold text-gray-800 dark:text-gray-100 mr-2">{getWeather1('temperature_2m')}</div>
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-yellow-500/20 rounded-full text-align: center">{getWeather1('wind_speed_10m')} м\с</div>
-          
-          
-        </div>
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">уведомление</div>
       </div>
       

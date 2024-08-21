@@ -83,9 +83,9 @@ export const DashboardCard01 = () => {
   return (  
  <div className="flex  col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <div className="px-5 pt-5 ">
-        <header  className="display:flex flex-col items-start mb-2 margin-left: auto">
-       
-        <img className="align: center" src='https://img.icons8.com/?size=100&id=dzi5TGZpsbP7&format=png&color=000000'></img>
+        <header >
+        <div className="text-lm text-7xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
+  
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-5">{dayOfWeek} {day} {month}</div>
           
           {/* Menu button */}
@@ -94,9 +94,9 @@ export const DashboardCard01 = () => {
 
      
         <div className="flex items-start items-start mb-2 ">
-        <div className="text-sm font-medium text-white-700 px-1.5 bg-orange-500/20 rounded-full">{getRise('sunrise')}</div>
-          <div className="text-lm text-6xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-gray-500/20 rounded-full text-align: center">{getRise('sunset')}</div>
+        
+        <div className="text-sm font-medium text-white-700 px-1.5 bg-orange-500/20 rounded-full">Рассвет в {getRise('sunrise')}</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-gray-500/20 rounded-full text-align: center">Закат в {getRise('sunset')}</div>
          
        
         

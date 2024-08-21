@@ -9,9 +9,7 @@
 
 @import 'tailwindcss/utilities';
 
-.flex{
-    justify-content: space-around
-}
+
 .items-start {
     align-items: center;
 }
