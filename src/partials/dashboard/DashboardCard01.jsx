@@ -101,15 +101,13 @@ export const DashboardCard01 = () => {
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">{dayOfWeek} {day} {month}</div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
-          <div className="text-sm font-medium text-red-700 px-1.5 bg-red-500/20 rounded-full text-align: center">Закат в {getRise('sunset')}</div>
-          <div className="text-sm font-medium text-green-700 px-1.5 bg-green-500/20 rounded-full">Восход в {getRise('sunrise')}</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-gray-500/20 rounded-full text-align: center">{getRise('sunset')}</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-orange-500/20 rounded-full">{getRise('sunrise')}</div>
+          
         </div>
+        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">уведомление</div>
       </div>
-      {/* Chart built with Chart.js 3 */}
-      <div className="grow max-sm:max-h-[128px] max-h-[128px]">
-        {/* Change the height attribute to adjust the chart height */}
-        проверка
-      </div>
+      
     </div>
   
   ); 
