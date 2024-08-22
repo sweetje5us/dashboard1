@@ -22,7 +22,7 @@ method: 'GET'
 );
 
 return (
-<div></div>
+UserData
 )
 }
 
