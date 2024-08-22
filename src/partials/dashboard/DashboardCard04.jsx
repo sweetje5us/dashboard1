@@ -7,9 +7,12 @@ const YourComponent = () => {
   return (
     
       <video width="750" height="500" controls >
-      <source src='https://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/1724350328.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiMTAuNzguMzMuMiIsImNoYW5uZWwiOiIwMDRhY2Y3NS1hMDZiLTQ3MzEtODk0OS1lZjgwMWNhYTM0MTIiLCJleHAiOjE3MjQzNzg0MDB9.YzCStAKhN_O1ehzZbIvPIgI5WfivifMN_IEbIOMjTek'
+      <source src='//live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiNDYuMTQ2LjQxLjcxIiwiY2hhbm5lbCI6IjAwNGFjZjc1LWEwNmItNDczMS04OTQ5LWVmODAxY2FhMzQxMiIsImV4cCI6MTcyNDM3ODQwMH0.DW-1_oi2n1QefMMJyJC15vcHfK-nSo-PuJlO1r123cA'
       type="video/mp4"/>
     </video>
+
+
+
   );
 };
 
