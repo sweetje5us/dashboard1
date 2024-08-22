@@ -20,9 +20,9 @@ method: 'GET'
     
   }, []
 );
-
+console.log(userData)
 return (
-UserData
+<div></div>
 )
 }
 
