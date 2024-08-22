@@ -3,43 +3,13 @@ import axios from "axios";
 import Player from "react-websockets-video-player";
 
 const YourComponent = () => {
-  const token2='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiMTAuNzguMzMuMiIsImNoYW5uZWwiOiJjYWFiNGU1MC1mOTYyLTQxZjAtYmM0NC1lN2U2NGM3MzBiYmQiLCJleHAiOjE3MjQzNzg0MDB9.PD0IyVhmYPPuDL-rmkdEb5mFuvK7zvkEot7vxl5U7Mg';
-  
-  const wsUrl = `wss://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=${token2}`;
-  
-  const userStream = useRef([]);
 
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then(stream => {
-      userStream.current.srcObject = stream;
-      const token2='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiMTAuNzguMzMuMiIsImNoYW5uZWwiOiJjYWFiNGU1MC1mOTYyLTQxZjAtYmM0NC1lN2U2NGM3MzBiYmQiLCJleHAiOjE3MjQzNzg0MDB9.PD0IyVhmYPPuDL-rmkdEb5mFuvK7zvkEot7vxl5U7Mg';
-  
-      var socket = new WebSocket(`wss://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=${token2}`);
-  
-      socket.onopen = () => socket.send(userStream.current.srcObject);
-      socket.onmessage = function (event) {
-        console.log("[message] Data received from server:");
-        if (event.data !== undefined && event.data !== null) {
-          console.log(event.data);
-        }
-      };
-      socket.onclose = () => {
-        console.log("Connection Closed!");
-      };
-      socket.onerror = () => {
-        console.log("WS Error");
-      };
-  
-      return () => {
-        socket.close();
-      };
-    });
-  }, []);
-  
   return (
-    <div>
-      <video controls style={{ height: 500, width: 500 }} autoPlay ref={userStream} />
-    </div>
+    
+      <video width="750" height="500" controls >
+      <source src='https://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/1724350328.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiMTAuNzguMzMuMiIsImNoYW5uZWwiOiIwMDRhY2Y3NS1hMDZiLTQ3MzEtODk0OS1lZjgwMWNhYTM0MTIiLCJleHAiOjE3MjQzNzg0MDB9.YzCStAKhN_O1ehzZbIvPIgI5WfivifMN_IEbIOMjTek'
+      type="video/mp4"/>
+    </video>
   );
 };
 
