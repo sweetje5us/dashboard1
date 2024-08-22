@@ -29,11 +29,19 @@ function getWeather1(a) {
       .then(res => res.json())
       .then(data => setUserData(data.current[a]))
     
-  }, []
-);
+  },
+  
+  []
+)
 
 
-  return (userData)
+if (Math.round(userData)>0){
+  return ('+'+Math.round(userData))
+}
+else if(Math.round(userData)==0){
+  return(Math.round(userData))
+}
+return('-'+Math.round(userData))
 }
 
 
@@ -92,7 +100,7 @@ export const DashboardCard02 = () => {
   return (  
  <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <div className="px-5 pt-5">
-      <div className="text-lm text-7xl font-bold text-gray-800 dark:text-gray-100 mr-2">{getWeather1('temperature_2m')}</div>
+      <div className="text-lm text-7xl font-bold text-gray-800 dark:text-gray-100 mr-2"><p>{getWeather1('temperature_2m')}<sup>o</sup></p></div>
       
         <header className="flex justify-between items-start mb-2">
           
@@ -101,8 +109,8 @@ export const DashboardCard02 = () => {
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Пермский край, Пермь</div>
         <div className="flex items-start">
         
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-blue-500/20 rounded-full">{getWeather2()}%</div>
-          <div className="text-sm font-medium text-white-700 px-1.5 bg-yellow-500/20 rounded-full text-align: center">{getWeather1('wind_speed_10m')} м\с</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-blue-500/20 rounded-full">Влажность {getWeather2()}%</div>
+          <div className="text-sm font-medium text-white-700 px-1.5 bg-yellow-500/20 rounded-full text-align: center">Ветер до {getWeather1('wind_speed_10m')} м\с</div>
           
           
         </div>
