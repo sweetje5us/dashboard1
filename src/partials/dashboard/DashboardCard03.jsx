@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import EditMenu from '../../components/DropdownEditMenu';
-import { YMaps, Map, TrafficControl, FullscreenControl } from '@pbe/react-yandex-maps';
+import { YMaps, Map, TrafficControl, FullscreenControl, Placemark } from '@pbe/react-yandex-maps';
 
 // Import utilities
 
@@ -31,7 +31,7 @@ function DashboardCard03() {
             
           </EditMenu>
         </header>
-        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Яндекс.Карты</div>
+        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">ул. Чернышевского 20</div>
         <div className="flex items-start">
           <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
           
@@ -45,6 +45,7 @@ function DashboardCard03() {
       float: 'right'
     }} />
     <FullscreenControl />
+    <Placemark defaultGeometry={[57.999168, 56.271461]} />
     </Map>
   </YMaps>
 </div>
