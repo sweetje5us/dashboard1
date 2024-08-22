@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LineChart from '../../charts/LineChart01';
 import { chartAreaGradient } from '../../charts/ChartjsConfig';
 import EditMenu from '../../components/DropdownEditMenu';
+import { YMaps, Map, TrafficControl, FullscreenControl } from '@pbe/react-yandex-maps';
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
@@ -12,8 +13,9 @@ function getHoro(a) {
   // fetching api data
   useEffect(() => {
     
-    fetch(`https://horoscopes.rambler.ru/api/front/v3/horoscope/general/aquarius/today/`,{
-method: 'GET'
+    fetch(`http://anecdotica.ru/api`,{
+method: 'GET',
+token : '••••••••••••••••••••'
     })
       .then(res => res.json())
       .then(data => setUserData(data))
@@ -51,7 +53,21 @@ function DashboardCard03() {
         </header>
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Водолей</div>
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">{getHoro('aquarius')}</div>
+          <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
+          
+<YMaps>
+    <Map defaultState={{
+    center: [57.999168, 56.271461],
+    zoom: 13,
+    controls: []
+  }}>
+      <TrafficControl options={{
+      float: 'right'
+    }} />
+    <FullscreenControl />
+    </Map>
+  </YMaps>
+</div>
         </div>
       </div>
       {/* Chart built with Chart.js 3 */}
