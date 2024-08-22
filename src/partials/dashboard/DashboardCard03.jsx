@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import EditMenu from '../../components/DropdownEditMenu';
@@ -46,6 +46,7 @@ function DashboardCard03() {
     }} />
     <FullscreenControl />
     <Placemark defaultGeometry={[57.999168, 56.271461]} />
+
     </Map>
   </YMaps>
 </div>

@@ -1,8 +1,23 @@
-import React from 'react';
-import BarChart from '../../charts/BarChart01';
+import React, { useState, useEffect } from 'react';
 
-// Import utilities
-import { tailwindConfig } from '../../utils/Utils';
+function getHoroscope() {
+  const [userData, setUserData] = useState([]);
+  // fetching api data
+  useEffect(() => {
+    fetch('https://api.quotable.io/random',
+  {
+
+  }
+  )
+      .then(res => res.json())
+      .then(data => setUserData(data))
+    
+  }, []
+);
+
+
+  return (JSON.stringify(userData))
+}
 
 function DashboardCard04() {
 
@@ -15,7 +30,7 @@ function DashboardCard04() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-    <div>ss</div>
+     <div>{getHoroscope()}</div> 
     </div>
   );
 }
