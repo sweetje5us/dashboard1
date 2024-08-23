@@ -5,6 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    
+    
     <script>
       if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
         document.querySelector('html').classList.add('dark');
@@ -13,7 +15,8 @@
         document.querySelector('html').classList.remove('dark');
         document.querySelector('html').style.colorScheme = 'light';
       }        
-    </script>      
+    </script>  
+    <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js"></script>    
   </head>
   <body class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400">
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -26,5 +29,7 @@
     </script>   
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript" charset="utf-8" src="//ignio.com/r/export/utf/tinyjs/daily/com.js"></script>
+    
   </body>
 </html>

@@ -13,3 +13,74 @@
 .items-start {
     align-items: center;
 }
+.ignioInformer { /* Глобальные установки */
+    width: 300px; /* Ширина информера */
+    border: 1px solid silver; /* Если хочется сделать рамку вокруг информера... */
+    margin: 10px 0px 10px 0px; /* Отступы снаружи от рамки с краёв: сверху, справа, снизу, слева */
+    padding: 5px 10px 5px 10px; /* Отступы внутри от рамки с краёв: сверху, справа, снизу, слева */
+    font-family: Tahoma, Verdana, Geneva, Helvetica; /* Шрифт основного текста */
+    color: silver; /* Цвет основного текста и цвет заголовка */
+    background: #000000; /*Цвет фона */
+  }
+
+  .ignioInformer * { /* Не обращаем внимания */
+      padding: 0;
+      margin: 0;
+   }
+
+  .ignioInformer a { /* Ссылки */
+    color: #FFCC99; /* Цвет ссылок */
+    text-decoration: none; /* Не подчёркивать ссылки */
+   }
+
+  .ignioInformerTitle { /* Заголовок */
+    padding: 5px; /* Отступ над/под заголовком */
+    text-align: center; /* Выровнять заголовок по центру */
+    /* color: white; Если хочется цвет заголовка сделать отличным от цвета текста */
+  }
+
+  .ignioInformerTitle h2 {
+    font-size: 14px; /* Размер текста заголовка */
+    display: inline;
+  }
+
+  .ignioInformerSelects { /* Выбор знака Зодиака и даты */
+    text-align: center; /* Выровнять по центру */
+    padding: 10px 0 5px 0; /* Отступы: сверху, справа, снизу, слева */
+    background: #333333; /* Цвет фона */
+  }
+
+  .ignioInformerSelectSign { /* Выбор знака Зодиака */
+    font-family: Arial; /* Шрифт */
+    font-size: 12px; /* Размер шрифта */
+    color: silver; /* Цвет шрифта */
+    font-weight: bold; /* Жирность: да */
+    margin: 0 5px 0 0; /* Отступ между знаком Зодиака и датой */
+    background: #333333; /* Цвет фона */
+  }
+
+  .ignioInformerSelectDate {
+    font-family: Arial; /* Шрифт */
+    font-size: 12px; /* Размер шрифта */
+    color: silver; /* Цвет шрифта */ 
+    font-weight: normal; /* Жирность: нет */
+    margin: 0 0 0 5px; /* Отступ между знаком Зодиака и датой */
+    background: #333333; /* Цвет фона */
+  }
+
+  .ignioInformerText { /* Собственно текст */
+    padding: 0px 5px 5px 5px; /* Отступы: сверху, справа, снизу, слева */
+    background: #333333; /* Цвет фона */
+  }
+
+  .ignioInformerText p {
+    padding: 5px 0; /* Отступы между абзацами если вдруг текст состоит из нескольких абзацев */
+    font-size: 12px; /* Размер шрифта текста */
+    text-align: justify; /* Сделать разрядку текста */
+  }
+
+  .ignioInformerTail {  /* Подпись */
+    padding: 5px; /* Отступы */ 
+    font-size: 12px; /* Размер шрифта */
+    text-align: center; /* Выровнять по центру */
+  }
