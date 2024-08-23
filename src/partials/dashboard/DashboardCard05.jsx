@@ -9,25 +9,26 @@ import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 
 function yaWidget(){
-  YaAuthSuggest.init(
+  window.YaAuthSuggest.init(
     {
-       client_id: 'fb308504b0844f1eb57c405e1de5ca63',
-       response_type: 'token',
-       redirect_uri: 'https://dashboard1-tau.vercel.app/'
+      client_id: "fb308504b0844f1eb57c405e1de5ca63",
+      response_type: "token",
+      redirect_uri: "https://dashboard1-tau.vercel.app/"
     },
-    'https://dashboard1-tau.vercel.app/'
- )
- .then(({
-    handler
- }) => handler())
- .then(data => console.log('Сообщение с токеном', data))
- .catch(error => console.log('Обработка ошибки', error)); 
- YaSendSuggestToken(
-  'https://dashboard1-tau.vercel.app/', 
-  {
-     flag: true
-  }
-)
+    "https://dashboard1-tau.vercel.app",
+    {
+      view: "button",
+      parentId: "buttonContainerId",
+      buttonSize: 'm',
+      buttonView: 'main',
+      buttonTheme: 'light',
+      buttonBorderRadius: "0",
+      buttonIcon: 'ya',
+    }
+  )
+  .then(({handler}) => handler())
+  .then(data => console.log('Сообщение с токеном', data))
+  .catch(error => console.log('Обработка ошибки', error))
 }
 
 
@@ -38,7 +39,7 @@ function DashboardCard05() {
       response_type: "token",
       redirect_uri: "https://dashboard1-tau.vercel.app/"
     },
-    "https://dashboard1-tau.vercel.app",
+    "https://dashboard1-tau.vercel.app/#",
     { view: "default" }
   )
   .then(({handler}) => handler())

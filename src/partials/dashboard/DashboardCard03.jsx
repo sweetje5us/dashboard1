@@ -37,7 +37,7 @@ function DashboardCard03() {
           <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
           
 <YMaps>
-    <Map defaultState={{
+    <Map  defaultState={{
     center: [57.999168, 56.271461],
     zoom: 13,
     controls: []
