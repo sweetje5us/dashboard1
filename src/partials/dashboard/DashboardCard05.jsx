@@ -8,7 +8,27 @@ import Iframe from 'react-iframe'
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 
-
+function yaWidget(){
+  YaAuthSuggest.init(
+    {
+       client_id: 'fb308504b0844f1eb57c405e1de5ca63',
+       response_type: 'token',
+       redirect_uri: 'https://dashboard1-tau.vercel.app/'
+    },
+    'https://dashboard1-tau.vercel.app/'
+ )
+ .then(({
+    handler
+ }) => handler())
+ .then(data => console.log('Сообщение с токеном', data))
+ .catch(error => console.log('Обработка ошибки', error)); 
+ YaSendSuggestToken(
+  'https://dashboard1-tau.vercel.app/', 
+  {
+     flag: true
+  }
+)
+}
 
 
 function DashboardCard05() {
@@ -25,7 +45,7 @@ function DashboardCard05() {
   .then(data => console.log('Сообщение с токеном', data))
   .catch(error => console.log('Обработка ошибки', error))
   return (
-  
+    
     
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
@@ -36,6 +56,7 @@ function DashboardCard05() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
+      {yaWidget()}
     
         
     </div>
