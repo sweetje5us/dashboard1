@@ -21,7 +21,7 @@ function yaWidget(){
   parentId: 'container',
   buttonView: 'main',
   buttonTheme: 'light',
-  buttonSize: 'm',
+  buttonSize: 's',
   buttonBorderRadius: 0
 }
 )
