@@ -9,24 +9,23 @@ import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 
 function yaWidget(){
-  YaAuthSuggest.init(
-    {
-      client_id: 'c46f0c53093440c39f12eff95a9f2f93',
-      response_type: 'token',
-      redirect_uri: 'https://examplesite.com/suggest/token'
-   },
-   'https://examplesite.com', 
-   {
-      view: 'button',
-      parentId: 'container',
-      buttonView: 'main',
-      buttonTheme: 'light',
-      buttonSize: 'm',
-      buttonBorderRadius: 0
-   }
+{
+  client_id: 'fb308504b0844f1eb57c405e1de5ca63',
+  response_type: 'token',
+  redirect_uri: 'https://dashboard1-tau.vercel.app/#'
+},
+'https://dashboard1-tau.vercel.app/', 
+{
+  view: 'button',
+  parentId: 'container',
+  buttonView: 'main',
+  buttonTheme: 'light',
+  buttonSize: 'm',
+  buttonBorderRadius: 0
+}
 )
 .then(({
-   handler
+handler
 }) => handler())
 .then(data => console.log('Сообщение с токеном', data))
 .catch(error => console.log('Обработка ошибки', error));
