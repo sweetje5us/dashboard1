@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import Player from "react-websockets-video-player";
+
 const token_rt='eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzpiNGE4NjgwNC04NDhiLTQzYWQtYmY3Ny01MjI0M2MzZTNhNDEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOltdLCJjbGllbnRfaWQiOiJiV0Z6ZEdWeU9qYzRPVFUyTmpveE9USTRNRGswT2pFMk56QTZOVFV3T1RjNk16b3hOanBRUTNWWFpHRmpTV3h0VDBjcmRpdG1OekEwYzA4MVVtaGtNblpLV21reFRFNTNURkZ1UnprMk56aFpQUT09IiwiZXhwIjoxNzU1OTM0OTQ0LCJleHQiOnt9LCJpYXQiOjE3MjQzOTg5NDQsImlzcyI6Imh0dHBzOi8vb2F1dGgyLmtleS5ydC5ydS8iLCJqdGkiOiI3ZDQ0MmViMy1lOTQ2LTRhOGUtYTNjYS05MzVlYmY4NmYxNTgiLCJuYmYiOjE3MjQzOTg5NDQsInNjcCI6W10sInN1YiI6ImJXRnpkR1Z5T2pjNE9UVTJOam94T1RJNE1EazBPakUyTnpBNk5UVXdPVGM2TXpveE5qcFFRM1ZYWkdGalNXeHRUMGNyZGl0bU56QTBjMDgxVW1oa01uWktXbWt4VEU1M1RGRnVSemsyTnpoWlBRPT0ifQ.KWAh6JQtxrUFXhNz7XGWZLMB0Bn8ZVBP_d-igIOq4RcZcrbtX8dGuRTGIzVcZGdXI8OJOs-nsUjz3h8BWRFPIfyQzOWm_YrS9VIKm2yT6ckrXoLID9-mjHcneDSeMx8pfjOMUifudk8GIE8Xy18BbT94GyapaeoYsVuyJni0EXp_R5iWRs0N1AhI5cEfM3SBpIrqZEGDJ70Yt1EGW87EmT0LhQovkrQe2VT4MlmLtNvhhj4TJJ9B05eCVIt_wAt0Cm9mN6nYGoxK8jbeon8hGlS945pRrgnQSVArOZoywHiSu9wtGJxsr8fhqpn1g8nIvaNxALoJFZiNqTUiO02n32lqu4JHDpfYeqVb0O6D8K2xAIjtqqOOvwYiQI3lla2v-KjTRYJfTukcd8k4Bcuhn7IqF7uiS4gs_gI3jGN6vfA3h2dh9jg_wcqSjAOEYTAqPBw3QyElXWzmgXm-TWgzhqP3euHS555JBu22sI16wiyfTI8CWyWNgRXPWvJSibL6OOq8y_GAqg1SkbSU95tymdIbEA0fWfxG7IM2A2kWMdYNdfx2D2IiGw6py4tjFkH8y2e3cV5DsDqmKuGL8VD_wJuMLXMb1sfx5LlAvziR3W5vjxj5vgL_fYmexHfrwHbVq6_E8B-yh59n6BmnZ5UiHEmqVQij7qXOiHGvWFJIyz4';
- const token_stream='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiNDYuMTQ2LjQxLjcxIiwiY2hhbm5lbCI6IjAwNGFjZjc1LWEwNmItNDczMS04OTQ5LWVmODAxY2FhMzQxMiIsImV4cCI6MTcyNDQ2NDgwMH0.PQ-W4NK32MrimaXlIlMuC2KTGNcv5EgKqGGXYCWkjk8';
+ var token_stream='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiNDYuMTQ2LjQxLjcxIiwiY2hhbm5lbCI6IjAwNGFjZjc1LWEwNmItNDczMS04OTQ5LWVmODAxY2FhMzQxMiIsImV4cCI6MTcyNDQ2NDgwMH0.PQ-W4NK32MrimaXlIlMuC2KTGNcv5EgKqGGXYCWkjk8';
 
  const YourComponent = () => {
 const url = `//live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=${token_stream}`
@@ -10,7 +11,7 @@ const url = `//live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa341
     
       <video width="750" height="45" controls >
       <source src={url}
-      />
+      type="video/mp4"/>
     </video>
 
 
@@ -18,6 +19,14 @@ const url = `//live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa341
   );
 };
 
+function getStreamerToken(){
+  fetch('https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0', {
+  headers: {
+    'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzpiNGE4NjgwNC04NDhiLTQzYWQtYmY3Ny01MjI0M2MzZTNhNDEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOltdLCJjbGllbnRfaWQiOiJiV0Z6ZEdWeU9qYzRPVFUyTmpveE9USTRNRGswT2pFMk56QTZOVFV3T1RjNk16b3hOanBRUTNWWFpHRmpTV3h0VDBjcmRpdG1OekEwYzA4MVVtaGtNblpLV21reFRFNTNURkZ1UnprMk56aFpQUT09IiwiZXhwIjoxNzU1ODc3ODk2LCJleHQiOnt9LCJpYXQiOjE3MjQzNDE4OTYsImlzcyI6Imh0dHBzOi8vb2F1dGgyLmtleS5ydC5ydS8iLCJqdGkiOiJlMjMxYmYzYS1mNDMyLTRiYjMtOTM4OC0yNWRhM2Y4YmVjYjMiLCJuYmYiOjE3MjQzNDE4OTYsInNjcCI6W10sInN1YiI6ImJXRnpkR1Z5T2pjNE9UVTJOam94T1RJNE1EazBPakUyTnpBNk5UVXdPVGM2TXpveE5qcFFRM1ZYWkdGalNXeHRUMGNyZGl0bU56QTBjMDgxVW1oa01uWktXbWt4VEU1M1RGRnVSemsyTnpoWlBRPT0ifQ.tzdejeI5E3HZwE8d5i_IqgdbXwv1QI4HmKYRxeUXFZaC55zuo9DvzkXEiIrJRldNT17F9QII2WuRCBoqWk9ZaOnYcSxyWavUx1OqlByKCUdc8eBlIZ1K2jl30_I2iYQrqzfv1R0ZdYsvSK6JHTWPFabC99t6pgdV50szLjrUjeOWGqe_hvExK7OA_pL-0ye6J0JCBSvftH7RPNJ0hiOts7JXx78JuQRBrgrXQRXrzHOOyXYbaw3E7PS2oUXHUswYfKBrGrMVzFLjdYFUJutwYydgRlqVTEyiNwVSeMHdPRgX1aTb5CQ2DktTOuN4-KWecHiYMebfxGXd8BZy7pFg6O1yNbHopawFWE8dHeoejgVWsIlYky2lcf6mnUq9WCXIL3IRe8YZcQqBH2W8hzsZnK9l0FQ55mLlY79GnWQEKFjTo4taCN2q5sDDh3_1nIsEVc67BUeyO1P9o7dLD9_1rKlDfYSCQCye4s3_rdItvZH3gaV_QXyLNUF5BgJVTqoHbqaks1X_0NZq_Ib3Y2CMdtw7Tc3J0jNRhycE9X9gnta4ytwe58mn3-IIw0UpVa0WdtHtbGKgIuejrFvF59nKjkX-HlECu74dWLA3Jk-2n1GhOCpyrm6y3-S2N5sa3-i4r18-JO_t4v_isWIM10gtCsHI4NPs8bbZM3SevJCJL8E',
+    'Cookie': 'TS01c37a3d=0194c94451b88c08328a103168e5e19805d852d58152f5b65bb9fc0647e7e89094311dc4262525b2c1f5aa2e69403049e6ef342b68; TS01418b58=0194c9445198853b4af326bee345671c2d92de48b08e3a74940fd9b91c065ab66365c6a56808a810d42446673baab4d12c91cebe2c'
+  }
+});
+}
 
 
 function ActionLink() {
@@ -61,6 +70,7 @@ function DashboardCard04() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
+        { getStreamerToken()}
       {ActionLink()}
       
       </header>
