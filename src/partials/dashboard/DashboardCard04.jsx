@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import Player from "react-websockets-video-player";
+import { Button, Popover  } from '@mui/material';
 
 const token_rt='eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzpiNGE4NjgwNC04NDhiLTQzYWQtYmY3Ny01MjI0M2MzZTNhNDEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOltdLCJjbGllbnRfaWQiOiJiV0Z6ZEdWeU9qYzRPVFUyTmpveE9USTRNRGswT2pFMk56QTZOVFV3T1RjNk16b3hOanBRUTNWWFpHRmpTV3h0VDBjcmRpdG1OekEwYzA4MVVtaGtNblpLV21reFRFNTNURkZ1UnprMk56aFpQUT09IiwiZXhwIjoxNzU1OTM0OTQ0LCJleHQiOnt9LCJpYXQiOjE3MjQzOTg5NDQsImlzcyI6Imh0dHBzOi8vb2F1dGgyLmtleS5ydC5ydS8iLCJqdGkiOiI3ZDQ0MmViMy1lOTQ2LTRhOGUtYTNjYS05MzVlYmY4NmYxNTgiLCJuYmYiOjE3MjQzOTg5NDQsInNjcCI6W10sInN1YiI6ImJXRnpkR1Z5T2pjNE9UVTJOam94T1RJNE1EazBPakUyTnpBNk5UVXdPVGM2TXpveE5qcFFRM1ZYWkdGalNXeHRUMGNyZGl0bU56QTBjMDgxVW1oa01uWktXbWt4VEU1M1RGRnVSemsyTnpoWlBRPT0ifQ.KWAh6JQtxrUFXhNz7XGWZLMB0Bn8ZVBP_d-igIOq4RcZcrbtX8dGuRTGIzVcZGdXI8OJOs-nsUjz3h8BWRFPIfyQzOWm_YrS9VIKm2yT6ckrXoLID9-mjHcneDSeMx8pfjOMUifudk8GIE8Xy18BbT94GyapaeoYsVuyJni0EXp_R5iWRs0N1AhI5cEfM3SBpIrqZEGDJ70Yt1EGW87EmT0LhQovkrQe2VT4MlmLtNvhhj4TJJ9B05eCVIt_wAt0Cm9mN6nYGoxK8jbeon8hGlS945pRrgnQSVArOZoywHiSu9wtGJxsr8fhqpn1g8nIvaNxALoJFZiNqTUiO02n32lqu4JHDpfYeqVb0O6D8K2xAIjtqqOOvwYiQI3lla2v-KjTRYJfTukcd8k4Bcuhn7IqF7uiS4gs_gI3jGN6vfA3h2dh9jg_wcqSjAOEYTAqPBw3QyElXWzmgXm-TWgzhqP3euHS555JBu22sI16wiyfTI8CWyWNgRXPWvJSibL6OOq8y_GAqg1SkbSU95tymdIbEA0fWfxG7IM2A2kWMdYNdfx2D2IiGw6py4tjFkH8y2e3cV5DsDqmKuGL8VD_wJuMLXMb1sfx5LlAvziR3W5vjxj5vgL_fYmexHfrwHbVq6_E8B-yh59n6BmnZ5UiHEmqVQij7qXOiHGvWFJIyz4';
  var token_stream='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHRfcHJvZHVjdGlvbiJ9.eyJpc3MiOiJ2Y2Zyb250X3Byb2R1Y3Rpb24iLCJzdWIiOjE5MjgwOTQsImlwIjoiNDYuMTQ2LjQxLjcxIiwiY2hhbm5lbCI6IjAwNGFjZjc1LWEwNmItNDczMS04OTQ5LWVmODAxY2FhMzQxMiIsImV4cCI6MTcyNDQ2NDgwMH0.PQ-W4NK32MrimaXlIlMuC2KTGNcv5EgKqGGXYCWkjk8';
@@ -54,9 +55,10 @@ function ActionLink() {
 
 
   return (
-    <button href="#" onClick={handleClick}>
-      Открыть дверь подъезда
-    </button>
+
+      <Button onClick={handleClick} variant="contained">Открыть дверь подъезда</Button>
+      
+
 
     );
 }
@@ -71,10 +73,13 @@ function DashboardCard04() {
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
         { getStreamerToken()}
-      {ActionLink()}
+      
+      <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Управление домофоном</h2>
       
       </header>
+     
       <div><YourComponent /></div>
+      {ActionLink()}
       
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}

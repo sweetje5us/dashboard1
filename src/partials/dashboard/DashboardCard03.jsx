@@ -31,7 +31,7 @@ function DashboardCard03() {
             
           </EditMenu>
         </header>
-        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">ул. Чернышевского 20</div>
+        
         <div className="flex items-start">
           <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
           
@@ -55,9 +55,11 @@ function DashboardCard03() {
       {/* Chart built with Chart.js 3 */}
       <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">
         {/* Change the height attribute to adjust the chart height */}
-       
+     
       </div>
+      
     </div>
+    
   );
 }
 
