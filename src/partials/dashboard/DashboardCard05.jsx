@@ -9,6 +9,7 @@ import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 
 
 function yaWidget(){
+  YaAuthSuggest.init(
 {
   client_id: 'fb308504b0844f1eb57c405e1de5ca63',
   response_type: 'token',
