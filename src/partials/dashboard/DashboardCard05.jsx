@@ -1,18 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import Tooltip from '../../components/Tooltip';
-import { chartAreaGradient } from '../../charts/ChartjsConfig';
-import RealtimeChart from '../../charts/RealtimeChart';
-import Iframe from 'react-iframe';
-import EditMenu from '../../components/DropdownEditMenu';
-import { Link } from 'react-router-dom';
-
-import { Tabs } from '@mui/material';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-// Import utilities
-import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+import { Link } from '@mui/material';
 
 
+function getNews(){
+  const newsApi = 'b403b54758cf1544439923059a2e1603';
+  const [userData, setUserData] = useState([]);
+  // fetching api data
+  useEffect(() => {
+    fetch(`https://gnews.io/api/v4/top-headlines?country=ru&category=general&apikey=${newsApi}`)
+      .then(res => res.json())
+      .then(data => setUserData(data.articles[0]))
+    
+  }, []
+);
+
+
+  return (<Link href={JSON.stringify(userData.url)}>
+{JSON.stringify(userData.title)}
+  </Link>  
+) 
+}
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
+  );
+}
+
+function BasicTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ height: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Новости" {...a11yProps(0)} />
+          <Tab label="Гороскоп" {...a11yProps(1)} />
+          <Tab label="новости ук" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+      {getNews()}
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        Item Two
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        Item Three
+      </CustomTabPanel>
+    </Box>
+  );
+}
+
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 function yaWidget(){
   YaAuthSuggest.init(
@@ -40,6 +110,11 @@ handler
 
 
 function DashboardCard05() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   window.YaAuthSuggest.init(
     {
       client_id: "fb308504b0844f1eb57c405e1de5ca63",
@@ -53,40 +128,15 @@ function DashboardCard05() {
   .then(data => console.log('Сообщение с токеном', data))
   .catch(error => console.log('Обработка ошибки', error))
   return (
-    
-    
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
-      <header className=" flex justify-between px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
-        <h2 className="font-semibold text-gray-800 dark:text-gray-100">Информация от УК</h2>
-        
-        <EditMenu align="right" className="relative inline-flex">
-            <li>
-              <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
-                Информация
-              </Link>
-            </li>
-            <li>
-              <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
-                Гороскоп
-              </Link>
-              <li>
-              <Link className="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" to="#0">
-                Новости
-              </Link>
-            </li>
-            </li>
-            
-          </EditMenu>
-      </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      {yaWidget()}
-      <div>
-        Блок текста
+ <div>
+        {yaWidget()}
+          {BasicTabs()}
       </div>
-    
-        
     </div>
+     
+ 
+      
   );
 }
 
