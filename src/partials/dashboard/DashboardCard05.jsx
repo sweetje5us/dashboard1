@@ -4,6 +4,11 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 
 
 function getNews(){
@@ -19,9 +24,36 @@ function getNews(){
 );
 
 
-  return (<Link href={JSON.stringify(userData.url)}>
-{JSON.stringify(userData.title)}
-  </Link>  
+  return (
+
+<Card variant="outlined" sx={{ maxWidth: 360 }}>
+      <Box sx={{ p: 2 }}>
+        <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Typography gutterBottom variant="h7" component="div">
+          {userData.title}
+          </Typography>
+         
+        </Stack>
+        <Typography color="text.secondary" variant="body2">
+        {userData.content}
+        </Typography>
+      </Box>
+      <Divider />
+      <Box sx={{ p: 2 }}>
+        <Typography gutterBottom variant="body2">
+       
+        </Typography>
+        <Stack direction="row" spacing={1}>
+           <Typography gutterBottom variant="h7" component="div">
+          {userData.publishedAt}
+          </Typography>
+        <Link href={userData.url}>
+Ссылка
+  </Link>
+        </Stack>
+      </Box>
+    </Card>
+
 ) 
 }
 
