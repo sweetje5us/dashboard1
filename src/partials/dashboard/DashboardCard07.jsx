@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch } from '@mui/material';
 
 function DashboardCard07() {
   return (
@@ -41,7 +42,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">вкл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+15</div>
@@ -50,7 +51,7 @@ function DashboardCard07() {
                   <div className="text-center">-</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">выкл</div>
+                  <div className="text-center text-sky-500"><Switch  defaultChecked /></div>
                 </td>
               </tr>
               <tr>
@@ -61,7 +62,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">-</div>
@@ -81,7 +82,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+24</div>
@@ -90,7 +91,7 @@ function DashboardCard07() {
                   <div className="text-center">-</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500">откл</div>
+                  <div className="text-center text-sky-500"><Switch  defaultChecked /></div>
                 </td>
               </tr>
               {/* Row */}
@@ -102,7 +103,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">вкл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+24</div>
@@ -123,13 +124,13 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">выкл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+24</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">-</div>
@@ -144,13 +145,13 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+25</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-sky-500">-</div>
@@ -165,7 +166,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center">откл</div>
+                  <div className="text-center"><Switch  defaultChecked /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+10</div>

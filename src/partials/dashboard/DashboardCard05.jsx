@@ -6,8 +6,12 @@ import Iframe from 'react-iframe';
 import EditMenu from '../../components/DropdownEditMenu';
 import { Link } from 'react-router-dom';
 
+import { Tabs } from '@mui/material';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
+
 
 
 function yaWidget(){
