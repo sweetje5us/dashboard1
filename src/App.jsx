@@ -26,8 +26,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/login" element={<yaWidget />} />
+        <Route exact path="/main" element={<Dashboard />} />
+        <Route exact path="/" element={<yaWidget />} />
       </Routes>
     </>
   );
