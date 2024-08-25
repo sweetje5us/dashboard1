@@ -5,7 +5,7 @@ function yaWidget(){
   {
     client_id: 'fb308504b0844f1eb57c405e1de5ca63',
     response_type: 'token',
-    redirect_uri: 'https://dashboard1-tau.vercel.app/main'
+    redirect_uri: 'https://dashboard1-tau.vercel.app/#'
   },
   'https://dashboard1-tau.vercel.app', 
   {

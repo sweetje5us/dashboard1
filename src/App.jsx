@@ -7,11 +7,11 @@ import {
 
 import './css/style.css';
 
-import './charts/ChartjsConfig';
+
 
 // Import pages
 import Dashboard from './pages/Dashboard';
-import YaPrint from './utils/yalogin';
+import DashboardCard13 from './partials/dashboard/DashboardCard13';
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
       <Routes>
        
         <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/login" element={<YaPrint />} />
+        <Route exact path="/1" element={<DashboardCard13 />} />
       </Routes>
     </>
   );
