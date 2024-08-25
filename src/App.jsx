@@ -8,6 +8,7 @@ import {
 import './css/style.css';
 
 
+import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
@@ -26,9 +27,10 @@ function App() {
   return (
     <>
       <Routes>
-       
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/1" element={<DashboardCard13 />} />
+
+        <Route exact path="*" element={<Dashboard />} />
+        <Route exact path='/ss' element={<DashboardCard13/>}/>
+
       </Routes>
     </>
   );
