@@ -1,5 +1,26 @@
 import React from 'react';
 
+function getHomeInfo(){
+  const myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+
+const raw = "";
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+
+fetch("https://api.iot.yandex.net/v1.0/user/info", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+  return(
+   <div></div>
+  )
+}
+
 function DashboardCard06() {
 
 
@@ -12,7 +33,7 @@ function DashboardCard06() {
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
       <div class="player">
-  play
+      {getHomeInfo()}
     <div class="controls">
         <button class="controls_play">Play</button>
     </div>
