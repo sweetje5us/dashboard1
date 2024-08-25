@@ -28,8 +28,7 @@ function App() {
     <>
       <Routes>
 
-        <Route exact path="*" element={<Dashboard />} />
-        <Route exact path='/ss' element={<DashboardCard13/>}/>
+        <Route  path="*" element={<Dashboard />} />
 
       </Routes>
     </>

@@ -1,8 +1,4 @@
 import React from 'react';
-import DoughnutChart from '../../charts/DoughnutChart';
-
-// Import utilities
-import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard06() {
 
@@ -15,11 +11,14 @@ function DashboardCard06() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-   <div>1</div>
-   <div>1</div>
-   <div>1</div>
-   <div>1</div>
-   <div>1</div>
+      <div class="player">
+  play
+    <div class="controls">
+        <button class="controls_play">Play</button>
+    </div>
+    
+    <div class="overlay"></div>
+</div>
     </div>
   );
 }
