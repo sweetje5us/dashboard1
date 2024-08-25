@@ -11,29 +11,7 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 
-function yaWidget(){
-  YaAuthSuggest.init(
-{
-  client_id: 'fb308504b0844f1eb57c405e1de5ca63',
-  response_type: 'token',
-  redirect_uri: 'https://dashboard1-tau.vercel.app/main'
-},
-'https://dashboard1-tau.vercel.app', 
-{
-  view: 'button',
-  parentId: 'container',
-  buttonView: 'main',
-  buttonTheme: 'light',
-  buttonSize: 's',
-  buttonBorderRadius: 0
-}
-)
-.then(({
-handler
-}) => handler())
-.then(data => console.log('Сообщение с токеном', data))
-.catch(error => console.log('Обработка ошибки', error));
-}
+
 
 function getNews(e){
   const newsApi = 'b403b54758cf1544439923059a2e1603';
@@ -150,7 +128,7 @@ function DashboardCard05() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
  <div>
-        {yaWidget()}
+       
           {BasicTabs()}
       </div>
     </div>

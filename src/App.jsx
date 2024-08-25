@@ -11,7 +11,7 @@ import './charts/ChartjsConfig';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
-import yaWidget from './utils/yalogin';
+import YaPrint from './utils/yalogin';
 
 function App() {
 
@@ -28,6 +28,7 @@ function App() {
       <Routes>
        
         <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/login" element={<YaPrint />} />
       </Routes>
     </>
   );

@@ -1,5 +1,6 @@
+import React from "react";
 
-export default function yaWidget(){
+function yaWidget(){
     YaAuthSuggest.init(
   {
     client_id: 'fb308504b0844f1eb57c405e1de5ca63',
@@ -22,5 +23,13 @@ export default function yaWidget(){
   .then(data => console.log('Сообщение с токеном', data))
   .catch(error => console.log('Обработка ошибки', error));
 }
+export function YaPrint(){
+    return(
+        <div>
+            {yaWidget()}
+        </div>
+    )
+}
 
 
+export default YaPrint();
