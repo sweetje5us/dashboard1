@@ -11,14 +11,14 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 
-function getNews(){
+function getNews(e){
   const newsApi = 'b403b54758cf1544439923059a2e1603';
   const [userData, setUserData] = useState([]);
   // fetching api data
   useEffect(() => {
     fetch(`https://gnews.io/api/v4/top-headlines?country=ru&category=general&apikey=${newsApi}`)
       .then(res => res.json())
-      .then(data => setUserData(data.articles[0]))
+      .then(data => setUserData(data.articles[e]))
     
   }, []
 );
@@ -26,32 +26,27 @@ function getNews(){
 
   return (
 
-<Card variant="outlined" sx={{ maxWidth: 360 }}>
-      <Box sx={{ p: 2 }}>
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
+<Card variant="outlined" sx={{ maxWidth: 360, bgcolor:'primart.dark' }}>
+  
+  
           <Typography gutterBottom variant="h7" component="div">
           {userData.title}
           </Typography>
          
-        </Stack>
-        <Typography color="text.secondary" variant="body2">
-        {userData.content}
-        </Typography>
-      </Box>
-      <Divider />
-      <Box sx={{ p: 2 }}>
-        <Typography gutterBottom variant="body2">
-       
-        </Typography>
-        <Stack direction="row" spacing={1}>
-           <Typography gutterBottom variant="h7" component="div">
-          {userData.publishedAt}
-          </Typography>
-        <Link href={userData.url}>
-Ссылка
+     
+
+
+ 
+        <Typography  gutterBottom variant="body2">
+        <Link href={userData.url}>Ссылка
   </Link>
-        </Stack>
-      </Box>
+        </Typography>
+    
+           
+        
+
+    
+
     </Card>
 
 ) 
@@ -90,7 +85,9 @@ function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      {getNews()}
+      {getNews('0')}
+      {getNews('1')}
+      {getNews('2')}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two
@@ -116,29 +113,7 @@ function a11yProps(index) {
   };
 }
 
-function yaWidget(){
-  YaAuthSuggest.init(
-{
-  client_id: 'fb308504b0844f1eb57c405e1de5ca63',
-  response_type: 'token',
-  redirect_uri: 'https://dashboard1-tau.vercel.app/#'
-},
-'https://dashboard1-tau.vercel.app/', 
-{
-  view: 'button',
-  parentId: 'container',
-  buttonView: 'main',
-  buttonTheme: 'light',
-  buttonSize: 's',
-  buttonBorderRadius: 0
-}
-)
-.then(({
-handler
-}) => handler())
-.then(data => console.log('Сообщение с токеном', data))
-.catch(error => console.log('Обработка ошибки', error));
-}
+
 
 
 function DashboardCard05() {
@@ -147,22 +122,11 @@ function DashboardCard05() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  window.YaAuthSuggest.init(
-    {
-      client_id: "fb308504b0844f1eb57c405e1de5ca63",
-      response_type: "token",
-      redirect_uri: "https://dashboard1-tau.vercel.app/"
-    },
-    "https://dashboard1-tau.vercel.app/#",
-    { view: "default" }
-  )
-  .then(({handler}) => handler())
-  .then(data => console.log('Сообщение с токеном', data))
-  .catch(error => console.log('Обработка ошибки', error))
+ 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
  <div>
-        {yaWidget()}
+       
           {BasicTabs()}
       </div>
     </div>

@@ -1,4 +1,4 @@
-
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import EditMenu from '../../components/DropdownEditMenu';
@@ -6,6 +6,21 @@ import { YMaps, Map, TrafficControl, FullscreenControl, Placemark } from '@pbe/r
 
 
 // Import utilities
+
+function getBus(){
+  const [userData, setUserData] = useState([]);
+  // fetching api data
+  useEffect(() => {
+    fetch('https://kudikina.ru/perm/bus/14/online?ajax')
+      .then(res => res.text())
+      .then(data => setUserData(data))
+    
+  }, []
+);
+
+
+  return (console.log(userData)) 
+}
 
 
 
@@ -40,8 +55,8 @@ function DashboardCard03() {
         
         <div className="flex items-start">
           <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
-          
-<YMaps>
+         
+            <YMaps>
     <Map  defaultState={{
     center: [57.999168, 56.271461],
     zoom: 13,
@@ -55,6 +70,9 @@ function DashboardCard03() {
 
     </Map>
   </YMaps>
+  {getBus()}
+          
+
 </div>
         </div>
       </div>
