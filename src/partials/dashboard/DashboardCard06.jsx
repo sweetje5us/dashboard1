@@ -1,26 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-function getHomeInfo(){
-  const [userData, setUserData] = useState([]);
-  const bearer_token = 'y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA'
-  const bearer = 'Bearer' + bearer_token;
-  // fetching api data
-  useEffect(() => {
-    fetch('https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/user/info', {
-      headers:{
-        'Authorization': bearer
-      }
-    })
-      .then(res => res.text())
-      .then(data => setUserData(data))
-    
-  }, []
-);
 
-
-  return (console.log(userData)) 
-}
 
 function DashboardCard06() {
 
@@ -34,7 +15,7 @@ function DashboardCard06() {
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
      <div>
-      {getHomeInfo()}
+ 
 
       
     </div>

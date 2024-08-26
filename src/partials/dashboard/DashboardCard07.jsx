@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Component } from 'react';
 const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqUUkQ';
 
 function handleChangeSw5(id, value){
@@ -10,6 +10,8 @@ function handleChangeSw5(id, value){
   myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
   myHeaders.append('Access-Control-Allow-Origin', 'http://localhost:5713');
   myHeaders.append('Access-Control-Allow-Credentials', 'true');
+  
+
   
   const raw = JSON.stringify({
     "devices": [
@@ -42,7 +44,7 @@ function handleChangeSw5(id, value){
     .then((result) => console.log(result))
     .catch((error) => console.error(error));
 }
-function handleStatus(id){
+function handleStatus(id, src){
   const [userData, setUserData] = useState([]);
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
@@ -52,16 +54,20 @@ function handleStatus(id){
     headers: myHeaders,
     redirect: "follow"
   };
-
+  useEffect(() => {
   fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
   .then(response => response.json())
-    .then(result => setUserData(result.properties[2].state.value))
+    .then(result => setUserData(result.properties[src].state.value))
     .catch((error) => console.error(error));
+  }, []);
 
-
-  
+  if (userData >0){
     return(
-     JSON.stringify(userData)
+      '+'+Math.round(userData)
+    )
+  }
+    return(
+     (userData)
     )
 }
 
@@ -116,7 +122,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch  defaultChecked value='2d330ad6-b76c-4bfb-82ba-a507c5750048'  defaultChecked onChange={switchHandler}/></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500">+15</div>
+                  <div className="text-center text-green-500">-</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center">-</div>
@@ -156,7 +162,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch  defaultChecked value='68695c4b-c4b3-4eef-bd06-0788f0b2b1e3'  defaultChecked onChange={switchHandler}/></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500">+24</div>
+                  <div className="text-center text-green-500">-</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center">-</div>
@@ -177,7 +183,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch  defaultChecked value='06373972-8464-4920-a866-73448fedea8f'  defaultChecked onChange={switchHandler} /></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500">+24</div>
+                  <div className="text-center text-green-500" value="8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f">{handleStatus('8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f', 2)} </div>
                 </td>
                 <td className="p-2">
                   <div className="text-center">-</div>
@@ -198,7 +204,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch value='4c661077-a9fa-47ef-bf60-79bce8d3c673'  defaultChecked onChange={switchHandler} /></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500" value='8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f'>+ {handleStatus('8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f')}</div>
+                  <div className="text-center text-green-500" value='8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f'>{handleStatus('8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f', 2)}</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center"><Switch  defaultChecked /></div>
@@ -219,7 +225,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch  defaultChecked value='1da20807-9966-4c1b-ae47-8665c5c989d3'  defaultChecked onChange={switchHandler}/></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500">+25</div>
+                  <div className="text-center text-green-500" value="f5e10267-5972-48fb-a358-c2db74c40df3">{handleStatus('35e3f2df-4372-452b-a61a-c6bf4f5cf4a2', 1)}</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center"><Switch  defaultChecked /></div>
@@ -240,7 +246,7 @@ function DashboardCard07() {
                   <div className="text-center"><Switch  defaultChecked defaultChecked value='900dca1a-e53a-418c-82cc-5ebb8795e266'  defaultChecked onChange={switchHandler}/></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500">+10</div>
+                  <div className="text-center text-green-500" value="35e3f2df-4372-452b-a61a-c6bf4f5cf4a2">{handleStatus('35e3f2df-4372-452b-a61a-c6bf4f5cf4a2', 1)}</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center">-</div>
