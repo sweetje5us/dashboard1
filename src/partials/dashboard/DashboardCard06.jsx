@@ -1,24 +1,25 @@
-import React from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 
 function getHomeInfo(){
-  const myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  const [userData, setUserData] = useState([]);
+  const bearer_token = 'y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA'
+  const bearer = 'Bearer' + bearer_token;
+  // fetching api data
+  useEffect(() => {
+    fetch('https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/user/info', {
+      headers:{
+        'Authorization': bearer
+      }
+    })
+      .then(res => res.text())
+      .then(data => setUserData(data))
+    
+  }, []
+);
 
-const raw = "";
 
-const requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow"
-};
-
-fetch("https://api.iot.yandex.net/v1.0/user/info", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
-  return(
-   <div></div>
-  )
+  return (console.log(userData)) 
 }
 
 function DashboardCard06() {
@@ -32,14 +33,14 @@ function DashboardCard06() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      <div class="player">
+     <div>
       {getHomeInfo()}
-    <div class="controls">
-        <button class="controls_play">Play</button>
+
+      
     </div>
     
-    <div class="overlay"></div>
-</div>
+    
+
     </div>
   );
 }

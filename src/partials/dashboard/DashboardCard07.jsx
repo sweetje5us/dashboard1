@@ -1,7 +1,56 @@
 import React from 'react';
 import { Switch } from '@mui/material';
+import { useState } from 'react';
 const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqUUkQ';
+
+function handleChangeSw5(value){
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append('Accept', 'application/json');
+  myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  myHeaders.append('Access-Control-Allow-Origin', 'http://localhost:5713');
+  myHeaders.append('Access-Control-Allow-Credentials', 'true');
+  
+  const raw = JSON.stringify({
+    "devices": [
+      {
+        "id": "4c661077-a9fa-47ef-bf60-79bce8d3c673",
+        "actions": [
+          {
+            "type": "devices.capabilities.on_off",
+            "state": {
+              "instance": "on",
+              "value": value
+            }
+          }
+        ]
+      }
+    ]
+  });
+  
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    mode: 'cors',
+    cache: 'default',
+    body: raw,
+    redirect: "follow",
+  };
+  
+  fetch("https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/actions", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+}
+
 function DashboardCard07() {
+
+  const [checked, setChecked] = useState(false);
+
+  const switchHandler = (event) => {
+    setChecked(event.target.checked);
+    handleChangeSw5(event.target.checked)
+  };
   return (
     <div className="col-span-full xl:col-span-8 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
@@ -124,7 +173,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch  defaultChecked /></div>
+                  <div className="text-center"><Switch  defaultChecked onChange={switchHandler} /></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">+24</div>

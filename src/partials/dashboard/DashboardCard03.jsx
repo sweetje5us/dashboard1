@@ -7,20 +7,7 @@ import { YMaps, Map, TrafficControl, FullscreenControl, Placemark } from '@pbe/r
 
 // Import utilities
 
-function getBus(){
-  const [userData, setUserData] = useState([]);
-  // fetching api data
-  useEffect(() => {
-    fetch('https://kudikina.ru/perm/bus/14/online?ajax')
-      .then(res => res.text())
-      .then(data => setUserData(data))
-    
-  }, []
-);
 
-
-  return (console.log(userData)) 
-}
 
 
 
@@ -70,7 +57,7 @@ function DashboardCard03() {
 
     </Map>
   </YMaps>
-  {getBus()}
+
           
 
 </div>
