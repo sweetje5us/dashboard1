@@ -3,6 +3,8 @@ import { Switch, Button } from '@mui/material';
 import { useState, useEffect, Component } from 'react';
 const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqUUkQ';
 
+
+
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
@@ -10,11 +12,11 @@ class Toggle extends React.Component {
 
     // Это привязывание необходимо, чтобы работал объект `this` в колбэке
     this.handleClick = this.handleClick.bind(this);
-  }
-  
+   
+  } 
 
- 
-   onLoadStatus(){
+   componentDidMount(){
+    
     const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
   
@@ -25,25 +27,30 @@ class Toggle extends React.Component {
   };
   fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${this.props.value}`, requestOptions)
   .then(response => response.json())
-    .then(result => this.state = {isToggleOn: (result.capabilities[0].state.value)})
+    .then(result => this.setState({isToggleOn: !(result.capabilities[0].state.value)}))
     .catch((error) => console.error(error));
-console.log(this.state.isToggleOn)
+
+return (
+     
+  <Switch onChange={this.handleClick} checked={!(this.state.isToggleOn)}>
+  </Switch>
+  
+);
    }
 
 
   handleClick() {
     this.setState(state => ({
-      isToggleOn: state.isToggleOn
+      isToggleOn: !this.state.isToggleOn
     }));
-    console.log(this.props.value)
     handleChangeSw5(this.props.value, this.state.isToggleOn)
-    this.onLoadStatus();
+ 
   }
 
   render() {
     return (
      
-      <Switch onChange={this.handleClick} checked={this.state.checked}>
+      <Switch onChange={this.handleClick} checked={!(this.state.isToggleOn)}>
       </Switch>
       
     );
