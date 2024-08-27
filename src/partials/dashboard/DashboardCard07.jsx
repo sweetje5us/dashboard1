@@ -8,15 +8,19 @@ const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqU
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
+    this.state = {
+      myArray: {}
+  }
 
     // Это привязывание необходимо, чтобы работал объект `this` в колбэке
     this.handleClick = this.handleClick.bind(this);
-   
+
   } 
 
    componentDidMount(){
-    
+    const { myArray } = this.state;
+    const id = this.props.value;
+    const uid = this.props.className;
     const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
   
@@ -25,14 +29,16 @@ class Toggle extends React.Component {
     headers: myHeaders,
     redirect: "follow"
   };
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${this.props.value}`, requestOptions)
+  fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
   .then(response => response.json())
-    .then(result => this.setState({isToggleOn: !(result.capabilities[0].state.value)}))
+  .then(result => 
+    myArray[uid]=(result.capabilities[0].state.value)
+    )
+    
     .catch((error) => console.error(error));
-
 return (
      
-  <Switch onChange={this.handleClick} checked={!(this.state.isToggleOn)}>
+  <Switch onChange={this.handleClick}>
   </Switch>
   
 );
@@ -40,17 +46,25 @@ return (
 
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !this.state.isToggleOn
-    }));
-    handleChangeSw5(this.props.value, this.state.isToggleOn)
+    const id = this.props.value;
+    const { myArray } = this.state;
+    // this.setState(state => ({
+    //   isToggleOn: !this.state.isToggleOn
+    // }));
+    
+  
+    myArray[this.props.className]=!this.state.myArray[this.props.className]
+    this.setState({ myArray } )
+
+    handleChangeSw5(this.props.value, this.state.myArray[this.props.className])
+    
  
   }
 
   render() {
     return (
      
-      <Switch onChange={this.handleClick} checked={!(this.state.isToggleOn)}>
+      <Switch onChange={this.handleClick} checked={this.state.myArray[this.props.className]} >
       </Switch>
       
     );
@@ -118,7 +132,7 @@ function handleChangeSw5(id, value){
   
   fetch("https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/actions", requestOptions)
     .then((response) => response.text())
-    .then((result) => console.log(result))
+ 
     .catch((error) => console.error(error));
 }
 function handleStatus(id, src){
@@ -153,17 +167,10 @@ function DashboardCard07() {
   const [checked, setChecked] = useState(false);
 
 
-  const switchHandler = (event) => {
-    setChecked(event.target.checked);
-    handleChangeSw5(event.target.value, event.target.checked);
-    
-  };
+
 
  
-    function updStatus(e) {
-      e.preventDefault();
-      console.log(statusOn('2d330ad6-b76c-4bfb-82ba-a507c5750048'))
-    }
+  
   
 
   return (
@@ -208,13 +215,9 @@ function DashboardCard07() {
                 <td className="p-2">
                
                   <div className="text-center">
-                    <Switch 
-               
-                  value='2d330ad6-b76c-4bfb-82ba-a507c5750048' 
-                  onChange={switchHandler}                  
-                  />
-                  <Button value='2d330ad6-b76c-4bfb-82ba-a507c5750048'onClick={updStatus}>{statusOn('2d330ad6-b76c-4bfb-82ba-a507c5750048')}</Button>
-                  <Toggle value='2d330ad6-b76c-4bfb-82ba-a507c5750048'></Toggle>
+                    
+                  
+                  <Toggle className='0' value='75cb6fc4-3fd9-4c60-a2ef-ba32cf97961f'></Toggle>
                   </div>
                 </td>
                 <td className="p-2">
@@ -224,8 +227,12 @@ function DashboardCard07() {
                   <div className="text-center">-</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500"><Switch   value='64f7c874-fada-446c-8cc3-83848e6d54ff'   onChange={switchHandler}/></div>
+                  <div className="text-center text-sky-500">
+                  <Toggle className='7' value='64f7c874-fada-446c-8cc3-83848e6d54ff'></Toggle>
+                  
+                  </div>
                 </td>
+                
               </tr>
               <tr>
                 <td className="p-2">
@@ -235,7 +242,8 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch   value='bd142373-4be7-4a22-ba7f-67c62520e419'  onChange={switchHandler}/></div>
+                  <div className="text-center"><Toggle className='1' value='bd142373-4be7-4a22-ba7f-67c62520e419'></Toggle></div>
+                  
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">-</div>
@@ -255,7 +263,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch   value='68695c4b-c4b3-4eef-bd06-0788f0b2b1e3'   onChange={switchHandler}/></div>
+                  <div className="text-center"><Toggle className='2' value='68695c4b-c4b3-4eef-bd06-0788f0b2b1e3'></Toggle></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500">-</div>
@@ -264,7 +272,7 @@ function DashboardCard07() {
                   <div className="text-center">-</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-sky-500"><Switch   value='3c7fe2c1-cb3e-439a-a366-ec1c6238bb4b'   onChange={switchHandler}/></div>
+                  <div className="text-center text-sky-500"><Toggle className='7' value='3c7fe2c1-cb3e-439a-a366-ec1c6238bb4b'></Toggle></div>
                 </td>
               </tr>
               {/* Row */}
@@ -276,7 +284,8 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch   value='06373972-8464-4920-a866-73448fedea8f'  onChange={switchHandler} /></div>
+                  <div className="text-center"><Toggle className='3' value='06373972-8464-4920-a866-73448fedea8f'></Toggle></div>
+                  
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500" value="8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f">{handleStatus('8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f', 2)} </div>
@@ -297,7 +306,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch value='4c661077-a9fa-47ef-bf60-79bce8d3c673'   onChange={switchHandler} /></div>
+                  <div className="text-center"><Toggle className='4' value='4c661077-a9fa-47ef-bf60-79bce8d3c673'></Toggle></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500" value='8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f'>{handleStatus('8bcfb58a-13b8-4e9b-a7a0-5199f2c28b8f', 2)}</div>
@@ -318,7 +327,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch   value='1da20807-9966-4c1b-ae47-8665c5c989d3'  onChange={switchHandler}/></div>
+                  <div className="text-center"><Toggle className='5' value='1da20807-9966-4c1b-ae47-8665c5c989d3'></Toggle></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500" value="f5e10267-5972-48fb-a358-c2db74c40df3">{handleStatus('35e3f2df-4372-452b-a61a-c6bf4f5cf4a2', 1)}</div>
@@ -339,7 +348,7 @@ function DashboardCard07() {
                   </div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center"><Switch   value='900dca1a-e53a-418c-82cc-5ebb8795e266'  onChange={switchHandler}/></div>
+                  <div className="text-center"><Toggle className='6' value='900dca1a-e53a-418c-82cc-5ebb8795e266'></Toggle></div>
                 </td>
                 <td className="p-2">
                   <div className="text-center text-green-500" value="35e3f2df-4372-452b-a61a-c6bf4f5cf4a2">{handleStatus('35e3f2df-4372-452b-a61a-c6bf4f5cf4a2', 1)}</div>
