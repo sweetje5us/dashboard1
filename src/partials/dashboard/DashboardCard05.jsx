@@ -182,13 +182,13 @@ function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      {/* {getNews('0')}
+      {getNews('0')}
       {getNews('1')}
-      {getNews('2')} */}
+      {getNews('2')}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      {/* {getHoro('aquarius')}
-      {getHoro('virgo')} */}
+      {getHoro('aquarius')}
+      {getHoro('virgo')}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
       {getNewsUK(0)}
