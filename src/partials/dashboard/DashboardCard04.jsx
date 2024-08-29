@@ -59,7 +59,7 @@ function Clip({ url }) {
   }, [url]);
 
   return (
-    <video ref={videoRef} autoplay loop muted playsinline>
+    <video ref={videoRef} webkit-playsinline="true" playsInline="true" playsinline="true" autoPlay muted loop controls>
       <source src={url} />
     </video>
   );
