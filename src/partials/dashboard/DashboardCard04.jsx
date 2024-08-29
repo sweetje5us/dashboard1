@@ -56,7 +56,7 @@ function Clip({ url }) {
   }, [url]);
 
   return (
-    <video ref={videoRef} controls autoPlay>
+    <video ref={videoRef} controls loop muted autoPlay>
       <source src={url} />
     </video>
   );
