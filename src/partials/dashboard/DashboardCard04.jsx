@@ -10,58 +10,20 @@ const token_rt='Bearer '+'eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzpiNGE4NjgwNC04ND
 var token_stream;
 
 
-const updateStrToken=()=>{
-  const url =`https://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token=${token}`
-  const myHeaders = new Headers();
-    myHeaders.append("Authorization", token_rt);
-    myHeaders.append("Cookie", "TS0173638d=0194c94451e3f51d25753e7b919b67b6509786d3e8f2441e8f1fe187b1d145a4d98b12ea64605529d6abca5beb802e3f16f97c926e");
-    
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-    };
-    const [userData, setUserData] = useState([]);
-    const fetchToken = async () => {
-      try {
-        const response = await 
-        fetch("https://cors-anywhere.herokuapp.com/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setUserData(data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-    useEffect(() => {   
-    fetchToken();
-    },[]
-  );
-
-  return (
-    <div>
-      {console.log(userData)}
-    </div>
-  );   
-     
-    
-}
-
 
 function Clip({ url }) {
+  
   const videoRef = useRef();
-
-
+  
   useEffect(() => {    
     videoRef.current?.load();
   }, [url]);
 
   return (
-    <video ref={videoRef} webkit-playsinline="true" playsInline="true" playsinline="true" autoPlay muted loop controls>
+    <video ref={videoRef}  muted controls>
       <source src={url} />
     </video>
+   
   );
 }
 

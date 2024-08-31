@@ -332,7 +332,7 @@ function DashboardCard07() {
                   <div className="text-center"><Toggle className='5' value='1da20807-9966-4c1b-ae47-8665c5c989d3'></Toggle></div>
                 </td>
                 <td className="p-2">
-                  <div className="text-center text-green-500" value="f5e10267-5972-48fb-a358-c2db74c40df3">{handleStatus('35e3f2df-4372-452b-a61a-c6bf4f5cf4a2', 1)}</div>
+                  <div className="text-center text-green-500" value="f5e10267-5972-48fb-a358-c2db74c40df3">{handleStatus('f5e10267-5972-48fb-a358-c2db74c40df3', 2)}</div>
                 </td>
                 <td className="p-2">
                   <div className="text-center"><Switch   /></div>
