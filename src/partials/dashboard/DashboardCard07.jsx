@@ -31,7 +31,7 @@ class Toggle extends React.Component {
     headers: myHeaders,
     redirect: "follow"
   };
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
+  fetch(`http://localhost:8088/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
   .then(response => response.json())
   .then(result => 
     myArray[uid]=(result.capabilities[0].state.value)
@@ -85,7 +85,7 @@ function statusOn(id){
     redirect: "follow"
   };
   useEffect(() => {
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
+  fetch(`http://localhost:8088/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
   .then(response => response.json())
     .then(result => setUserData(result.capabilities[0].state.value))
     .catch((error) => console.error(error));
@@ -132,7 +132,7 @@ function handleChangeSw5(id, value){
     redirect: "follow",
   };
   
-  fetch("https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/actions", requestOptions)
+  fetch("http://localhost:8088/https://api.iot.yandex.net/v1.0/devices/actions", requestOptions)
     .then((response) => response.text())
  
     .catch((error) => console.error(error));
@@ -148,7 +148,7 @@ function handleStatus(id, src){
     redirect: "follow"
   };
   useEffect(() => {
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
+  fetch(`http://localhost:8088/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
   .then(response => response.json())
     .then(result => setUserData(result.properties[src].state.value))
     .catch((error) => console.error(error));

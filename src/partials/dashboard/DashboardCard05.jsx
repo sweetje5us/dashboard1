@@ -46,7 +46,7 @@ const requestOptions = {
 };
 const [userData, setUserData] = useState([]);
  useEffect(() => {
-fetch("https://cors-anywhere.herokuapp.com/https://customer-api.domyland.ru/newsfeed?fromRow=0", requestOptions)
+fetch("http://localhost:8088/https://customer-api.domyland.ru/newsfeed?fromRow=0", requestOptions)
 .then(res => res.json())
 
 .then(result => setUserData(result.data.items))
@@ -119,7 +119,7 @@ function getHoro(e){
   const [userData, setUserData] = useState([]);
   // fetching api data
   useEffect(() => {
-    fetch(`https://cors-anywhere.herokuapp.com/https://horoscopes.rambler.ru/api/front/v3/horoscope/general/${e}/today/`)
+    fetch(`http://localhost:8088/https://horoscopes.rambler.ru/api/front/v3/horoscope/general/${e}/today/`)
       .then(res => res.json())
       .then(data => setUserData(data.content.text[0].content))
     

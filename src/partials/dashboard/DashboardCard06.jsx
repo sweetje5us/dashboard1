@@ -13,7 +13,20 @@ function DashboardCard06() {
 
   // getNewsUK(getTokenUK())
   // getNewsUK(token2)
-  
+  function handleClick(e) {
+    e.preventDefault();
+    const myHeaders = new Headers();
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders
+    };
+    
+    fetch("http://localhost:8088/http://horoscopes.rambler.ru/api/front/v3/horoscope/general/aquarius/today", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+      
+  }
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
@@ -23,7 +36,7 @@ function DashboardCard06() {
       {/* Change the height attribute to adjust the chart height */}
 
      <div>
- 
+ <button onClick={handleClick}>нажми</button>
 
       
     </div>
