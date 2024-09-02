@@ -21,7 +21,7 @@ function DashboardCard06() {
       headers: myHeaders
     };
     
-    fetch("http://192.168.0.20:8088/http://horoscopes.rambler.ru/api/front/v3/horoscope/general/aquarius/today", requestOptions)
+    fetch("https://192.168.0.20:8088/http://horoscopes.rambler.ru/api/front/v3/horoscope/general/aquarius/today", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
