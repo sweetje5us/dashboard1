@@ -48,7 +48,7 @@ class VideoRender extends React.Component {
       redirect: "follow"
     };
     
-    fetch("http://localhost:8088/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
+    fetch("http://192.168.0.20:8088/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
       .then((response) => response.json())
       .then((result) => this.setState({token : 'https://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token='+result.data.items[1].streamer_token}))
       .then((result) => console.log(this.state.token))
@@ -131,7 +131,7 @@ function DashboardCard04() {
       redirect: "follow"
     };
     
-    fetch("http://localhost:8088/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
+    fetch("http://192.168.0.20:8088/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
       .then((response) => response.json())
       .then((result) => token_stream=(result.data.items[1].streamer_token))
       .catch((error) => console.error(error));

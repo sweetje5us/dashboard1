@@ -46,7 +46,7 @@ const requestOptions = {
 };
 const [userData, setUserData] = useState([]);
  useEffect(() => {
-fetch("http://localhost:8088/https://customer-api.domyland.ru/newsfeed?fromRow=0", requestOptions)
+fetch("http://192.168.0.20:8088/https://customer-api.domyland.ru/newsfeed?fromRow=0", requestOptions)
 .then(res => res.json())
 
 .then(result => setUserData(result.data.items))
