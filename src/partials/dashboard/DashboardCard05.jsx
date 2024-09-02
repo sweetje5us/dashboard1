@@ -119,7 +119,7 @@ function getHoro(e){
   const [userData, setUserData] = useState([]);
   // fetching api data
   useEffect(() => {
-    fetch(`http://localhost:8088/https://horoscopes.rambler.ru/api/front/v3/horoscope/general/${e}/today/`)
+    fetch(`http://192.168.0.20:8088/https://horoscopes.rambler.ru/api/front/v3/horoscope/general/${e}/today/`)
       .then(res => res.json())
       .then(data => setUserData(data.content.text[0].content))
     
