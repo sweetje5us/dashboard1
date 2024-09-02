@@ -50,7 +50,7 @@ class VideoRender extends React.Component {
     
     fetch("http://192.168.0.20:8088/https://vc.key.rt.ru/api/v1/cameras?limit=100&offset=0", requestOptions)
       .then((response) => response.json())
-      .then((result) => this.setState({token : 'https://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token='+result.data.items[1].streamer_token}))
+      .then((result) => this.setState({token : 'http://live-vdk4.camera.rt.ru/stream/004acf75-a06b-4731-8949-ef801caa3412/live.mp4?mp4-fragment-length=0.5&mp4-use-speed=0&mp4-afiller=1&token='+result.data.items[1].streamer_token}))
       .then((result) => console.log(this.state.token))
       .catch((error) => console.error(error));
 
