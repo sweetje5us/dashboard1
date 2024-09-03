@@ -8,11 +8,11 @@ import {
 import './css/style.css';
 
 
-import './charts/ChartjsConfig';
+
 
 // Import pages
 import Dashboard from './pages/Dashboard';
-import DashboardCard13 from './partials/dashboard/DashboardCard13';
+
 
 function App() {
 
