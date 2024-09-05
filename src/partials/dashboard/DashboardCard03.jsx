@@ -41,10 +41,11 @@ function DashboardCard03() {
           </EditMenu>
         </header>
         
-        <div className="flex items-start">
-          <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
+       
+          <div  className="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">
          
             <YMaps>
+            <div style={{maxWidth:"100%"}}>
     <Map  defaultState={{
     center: [57.999168, 56.271461],
     zoom: 13,
@@ -54,15 +55,16 @@ function DashboardCard03() {
       float: 'right'
     }} />
     <FullscreenControl />
-    <Placemark defaultGeometry={[57.999168, 56.271461]} />
+    <Placemark defaultGeometry={[57.999168, 56.271461]}  />
 
     </Map>
+    </div>  
   </YMaps>
 
-          
+    
 
 </div>
-        </div>
+        
       </div>
       {/* Chart built with Chart.js 3 */}
       <div className="grow max-sm:max-h-[128px] xl:max-h-[128px]">

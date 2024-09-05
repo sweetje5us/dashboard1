@@ -13,6 +13,9 @@
 .items-start {
     align-items: center;
 }
+.items-between{
+  justify-content: space-between;
+}
 .ignioInformer { /* Глобальные установки */
     width: 300px; /* Ширина информера */
     border: 1px solid silver; /* Если хочется сделать рамку вокруг информера... */

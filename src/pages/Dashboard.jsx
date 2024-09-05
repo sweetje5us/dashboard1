@@ -52,7 +52,7 @@ function Dashboard() {
               {/* Line chart (Acme Advanced) */}
               <DashboardCard02 />
               {/* Line chart (Acme Professional) */}
-              <DashboardCard03 />
+              {/* <DashboardCard03 /> */}
               {/* Bar chart (Direct vs Indirect) */}
               <DashboardCard04 />
               {/* Line chart (Real Time Value) */}

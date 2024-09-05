@@ -76,10 +76,11 @@ export const DashboardCard01 = () => {
   
 
   return (  
- <div className="flex  col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+ <div className="flex  col-span-full sm:col-span-6 x1:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
       <div className="px-5 pt-5 ">
         <header >
         <div className="text-lm text-7xl font-bold text-gray-800 dark:text-gray-100 mr-2">{hours}:{minutes}</div>
+        
   
         <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-5">{dayOfWeek} {day} {month}</div>
           

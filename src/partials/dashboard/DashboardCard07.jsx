@@ -3,7 +3,19 @@ import { Switch, Button } from '@mui/material';
 import { useState, useEffect, Component } from 'react';
 const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqUUkQ';
 
-
+const useExpired = (time)=>{
+  const [expired, setExpired] = useState(false);
+  const timoutRef = useRef();
+  useEffect(()=>{
+    timoutRef.current = setTimeout(()=>{
+      setExpired(true);
+    }, time);
+    return ()=>{
+      clearTimeout(timoutRef.current);
+    }
+  },[time]);
+  return expired;
+}
 
 
 
@@ -11,7 +23,18 @@ class Toggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myArray: {}
+      myArray: [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
   }
 
     // Это привязывание необходимо, чтобы работал объект `this` в колбэке
@@ -20,7 +43,22 @@ class Toggle extends React.Component {
   } 
 
    componentDidMount(){
-    const { myArray } = this.state;
+    this.getCenter();
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+    // set Interval
+    this.interval = setInterval(this.getCenter, 10000);
+   
+    return (
+       
+      <Switch onChange={this.handleClick} checked={this.state.myArray[this.props.className]}>
+      </Switch>
+      
+    );
+  
+   }
+
+   getCenter=()=>{
+     const { myArray } = this.state;
     const id = this.props.value;
     const uid = this.props.className;
     const myHeaders = new Headers();
@@ -31,22 +69,15 @@ class Toggle extends React.Component {
     headers: myHeaders,
     redirect: "follow"
   };
-  fetch(`http://192.168.0.20:8088/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
-  .then(response => response.json())
-  .then(result => 
-    myArray[uid]=(result.capabilities[0].state.value)
-    )
-    
-    .catch((error) => console.error(error));
-return (
-     
-  <Switch onChange={this.handleClick}>
-  </Switch>
-  
-);
+    fetch(`http://192.168.0.20:8088/https://api.iot.yandex.net/v1.0/devices/${id}`, requestOptions)
+    .then(response => response.json())
+    .then(result => 
+      myArray[uid]=(result.capabilities[0].state.value)
+      )
+      
+      .catch((error) => console.error(error));
+
    }
-
-
   handleClick() {
     const id = this.props.value;
     const { myArray } = this.state;
@@ -169,7 +200,17 @@ function DashboardCard07() {
   const [checked, setChecked] = useState(false);
 
 
+ function handleClick() {
+  handleChangeSw5('75cb6fc4-3fd9-4c60-a2ef-ba32cf97961f', false);
+  handleChangeSw5('bd142373-4be7-4a22-ba7f-67c62520e419', false);
+  handleChangeSw5('68695c4b-c4b3-4eef-bd06-0788f0b2b1e3', false);
+  handleChangeSw5('06373972-8464-4920-a866-73448fedea8f', false);
+  handleChangeSw5('4c661077-a9fa-47ef-bf60-79bce8d3c673', false);
+  handleChangeSw5('1da20807-9966-4c1b-ae47-8665c5c989d3', false);
+  handleChangeSw5('900dca1a-e53a-418c-82cc-5ebb8795e266', false);
+  handleChangeSw5('3c7fe2c1-cb3e-439a-a366-ec1c6238bb4b', false);
 
+  }
 
  
   
@@ -177,8 +218,15 @@ function DashboardCard07() {
 
   return (
     <div className="col-span-full xl:col-span-8 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
-      <header className="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
+      <header 
+      className="flex items-between px-5 py-4 border-b border-gray-100 dark:border-gray-700/60" 
+     
+      
+      >
         <h2 className="font-semibold text-gray-800 dark:text-gray-100">Умный дом</h2>
+        <div>
+        <Button onClick={handleClick} variant="contained">выключить все</Button>
+        </div>
       </header>
       <div className="p-3">
         {/* Table */}
