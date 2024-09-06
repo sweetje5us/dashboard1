@@ -26,22 +26,113 @@ import Typography from '@mui/material/Typography';
 
 const token_uk="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY3VzdG9tZXItYXBpLmRvbXlsYW5kLnJ1XC8iLCJzdWIiOiJjdXN0b21lciIsImNpZCI6MTk0MjQ1Mywic2lkIjoyNDIzMDMzLCJleHAiOjIwNDAzNjYwNDl9.fq1bwvhx3XsLaTARHLVSNQsYuN3b6H7Y-zUGl6Vr_Dr5OL90JmC84zUEUkuKLTJAiMRtUWhWSTuzhcyBv6vxOgw-VI26Mpr_CCoogW5m6ES_DMRCY__DmiS-4pfaAaPbcPzP1t746ZWCuP-N862ncSQOihqU__0GzP7qZgi5AU0BYBn-RiHQkOeSyT44oMZd4YdbFNMj1N6Ioje8TbozKsFooP4S0k9sl1_fYsOPYjZXEuZ774kYqrrvTVafZmpwza5o8xjm_0qHgRsCde8MNZ2NrWu_hWgFSVaU5faiOw44IYVyej8uvGqxZTHL74OsLz4lD0-NQWzvENGzdM6ZCw";
 
+
+function sendTask(task){
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  const raw = JSON.stringify({
+    "name": task,
+    "age": "test"
+  });
+  
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+  };
+  
+  fetch("http://192.168.0.20:8088/api/tasks/", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error)); 
+ 
+}
+
+function deleteTask(index){
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+
+  
+  const requestOptions = {
+    method: "DELETE",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+  
+  fetch(`http://192.168.0.20:8088/api/tasks/${index}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error)); 
+}
+
+
+
+
 const TodoList = () => {
 const [todos, setTodos] = useState([]);
 const [task, setTask] = useState('');
+const [data, setData] = useState([]);
+function getTask(){
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
 
-const handleAddTodo = () => {
+  
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+
+    redirect: "follow"
+  };
+
+  
+  fetch("http://192.168.0.20:8088/api/tasks/", requestOptions)
+    .then((response) => response.json())
+    .then((result) => loadTodo(result))
+    
+    .catch((error) => console.error(error)); 
+    // setTodos([...todos, result[0].name])
+    
+ 
+}
+
+function loadTodo(count){
+  
+
+for (let i=0; i<(count.length); i++){
+  
+  todos[i] = count[i].name
+  
+}
+  
+      
+  
+
+       
+}
+
+function handleAddTodo (index) {
+  
  if (task.trim() !== '') {
+  sendTask(task);
      setTodos([...todos, task]);
+    
      setTask('')}};
 
-const handleRemoveTodo = (index) => {
+function handleRemoveTodo(index) {
  const newTodos = [...todos];
+ deleteTask(index);
  newTodos.splice(index, 1);
  setTodos(newTodos);};
+ 
 
 return (
-  <Container>
+  
+    <Container>
+      {getTask()}
     <Paper
       component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "100%" }}
@@ -56,6 +147,9 @@ return (
       />
       
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+      <IconButton onClick={getTask} color="primary" sx={{ p: '10px' }} aria-label="directions">
+        <AddIcon />
+      </IconButton>
       <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
         <AddIcon />
       </IconButton>
