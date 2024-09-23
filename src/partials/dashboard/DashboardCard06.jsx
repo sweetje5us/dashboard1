@@ -21,11 +21,9 @@ import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import token from '../../utils/token.json'
 
-
-
-const token_uk="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY3VzdG9tZXItYXBpLmRvbXlsYW5kLnJ1XC8iLCJzdWIiOiJjdXN0b21lciIsImNpZCI6MTk0MjQ1Mywic2lkIjoyNDIzMDMzLCJleHAiOjIwNDAzNjYwNDl9.fq1bwvhx3XsLaTARHLVSNQsYuN3b6H7Y-zUGl6Vr_Dr5OL90JmC84zUEUkuKLTJAiMRtUWhWSTuzhcyBv6vxOgw-VI26Mpr_CCoogW5m6ES_DMRCY__DmiS-4pfaAaPbcPzP1t746ZWCuP-N862ncSQOihqU__0GzP7qZgi5AU0BYBn-RiHQkOeSyT44oMZd4YdbFNMj1N6Ioje8TbozKsFooP4S0k9sl1_fYsOPYjZXEuZ774kYqrrvTVafZmpwza5o8xjm_0qHgRsCde8MNZ2NrWu_hWgFSVaU5faiOw44IYVyej8uvGqxZTHL74OsLz4lD0-NQWzvENGzdM6ZCw";
-
+const token_uk=token.token_uk;
 
 function sendTask(task){
   const myHeaders = new Headers();
@@ -102,9 +100,9 @@ function getTask(){
 function loadTodo(count){
   
 
-for (let i=0; i<(count.length); i++){
+for (let i=1; i<(count.length); i++){
   
-  todos[i] = count[i].name
+  todos[i-1] = count[i].name
   
 }
   
@@ -124,9 +122,10 @@ function handleAddTodo (index) {
 
 function handleRemoveTodo(index) {
  const newTodos = [...todos];
- deleteTask(index);
- newTodos.splice(index, 1);
- setTodos(newTodos);};
+ deleteTask(index+1);
+ newTodos.splice(index, 1) ;
+ setTodos(newTodos);
+};
  
 
 return (
@@ -147,9 +146,9 @@ return (
       />
       
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton onClick={getTask} color="primary" sx={{ p: '10px' }} aria-label="directions">
+      {/* <IconButton onClick={getTask} color="primary" sx={{ p: '10px' }} aria-label="directions">
         <AddIcon />
-      </IconButton>
+      </IconButton> */}
       <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
         <AddIcon />
       </IconButton>
@@ -162,7 +161,7 @@ return (
 </Typography>
               {todos.map((todo, index) => (
                 
-            <ListGroup.Item key={index}>
+            <ListGroup.Item key={index+1}>
             {todo}
             <CloseRounded style={{ float: "right",
                                   marginLeft: "5px",
@@ -217,7 +216,10 @@ if (userData){
   return(
     <div>
       <div>
-      Статус Счетов УК - {userData.title}
+      Статус Счетов УК - 
+      </div>
+      <div>
+      {userData.title} {userData.debtTitle}
       </div>
 
     

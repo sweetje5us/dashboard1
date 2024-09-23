@@ -7,8 +7,9 @@ import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import token from '../../utils/token.json'
 
-const token_uk="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY3VzdG9tZXItYXBpLmRvbXlsYW5kLnJ1XC8iLCJzdWIiOiJjdXN0b21lciIsImNpZCI6MTk0MjQ1Mywic2lkIjoyNDIzMDMzLCJleHAiOjIwNDAzNjYwNDl9.fq1bwvhx3XsLaTARHLVSNQsYuN3b6H7Y-zUGl6Vr_Dr5OL90JmC84zUEUkuKLTJAiMRtUWhWSTuzhcyBv6vxOgw-VI26Mpr_CCoogW5m6ES_DMRCY__DmiS-4pfaAaPbcPzP1t746ZWCuP-N862ncSQOihqU__0GzP7qZgi5AU0BYBn-RiHQkOeSyT44oMZd4YdbFNMj1N6Ioje8TbozKsFooP4S0k9sl1_fYsOPYjZXEuZ774kYqrrvTVafZmpwza5o8xjm_0qHgRsCde8MNZ2NrWu_hWgFSVaU5faiOw44IYVyej8uvGqxZTHL74OsLz4lD0-NQWzvENGzdM6ZCw";
+const token_uk=token.token_uk;
 
 function getNewsUK(e){
   const myHeaders = new Headers();
@@ -54,7 +55,7 @@ fetch("http://192.168.0.20:8088/https://customer-api.domyland.ru/newsfeed?fromRo
 if (userData[e]){
 return(
   
-  <Card className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800  rounded-xl"  sx={{ maxWidth: 360, bgcolor:'primart.dark' }}variant="outlined" sx={{ maxWidth: 360, bgcolor:'primart.dark' }}>
+  <Card className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800  rounded-xl"  sx={{ maxWidth: 360, bgcolor:'primart.dark' }}variant="outlined" >
   
   
           <Typography className="font-semibold text-gray-800 dark:text-gray-100" gutterBottom variant="h6" component="div">
@@ -95,7 +96,7 @@ function getNews(e){
 
   return (
 
-<Card className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800  rounded-xl"  sx={{ maxWidth: 360, bgcolor:'primart.dark' }} variant="outlined" sx={{ maxWidth: 360, bgcolor:'primart.dark' }}>
+<Card className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800  rounded-xl"  sx={{ maxWidth: 360, bgcolor:'primart.dark' }} variant="outlined" >
   
   
           <Typography className="font-semibold text-gray-800 dark:text-gray-100" gutterBottom variant="h7" component="div">

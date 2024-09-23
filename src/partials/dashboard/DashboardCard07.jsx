@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Button } from '@mui/material';
 import { useState, useEffect, Component } from 'react';
-const access_token = 'y0_AgAAAAArXzIrAAxOmQAAAAEOrp-NAACvhbk02AtGAb9UG2Z__Vy3vqUUkQ';
+import ytoken from '../../utils/token.json'
+const access_token = ytoken.token_yandex;
 
 const useExpired = (time)=>{
   const [expired, setExpired] = useState(false);
@@ -62,7 +63,7 @@ class Toggle extends React.Component {
     const id = this.props.value;
     const uid = this.props.className;
     const myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  myHeaders.append("Authorization", `Bearer ${access_token}`);
   
   const requestOptions = {
     method: "GET",
@@ -108,7 +109,7 @@ class Toggle extends React.Component {
 function statusOn(id){
   const [userData, setUserData] = useState([]);
   const myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  myHeaders.append("Authorization", `Bearer ${access_token}`);
   
   const requestOptions = {
     method: "GET",
@@ -131,7 +132,7 @@ function handleChangeSw5(id, value){
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append('Accept', 'application/json');
-  myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  myHeaders.append("Authorization", `Bearer ${access_token}`);
   myHeaders.append('Access-Control-Allow-Origin', 'http://192.168.0.20:5713');
   myHeaders.append('Access-Control-Allow-Credentials', 'true');
   
@@ -171,7 +172,7 @@ function handleChangeSw5(id, value){
 function handleStatus(id, src){
   const [userData, setUserData] = useState([]);
   const myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer y0_AgAAAAArXzIrAAxS6gAAAAEO2JXXAACCh69E7NtBGKLnfg4LmBIPmXOMcA");
+  myHeaders.append("Authorization", `Bearer ${access_token}`);
   
   const requestOptions = {
     method: "GET",
@@ -201,14 +202,15 @@ function DashboardCard07() {
 
 
  function handleClick() {
-  handleChangeSw5('75cb6fc4-3fd9-4c60-a2ef-ba32cf97961f', false);
-  handleChangeSw5('bd142373-4be7-4a22-ba7f-67c62520e419', false);
-  handleChangeSw5('68695c4b-c4b3-4eef-bd06-0788f0b2b1e3', false);
-  handleChangeSw5('06373972-8464-4920-a866-73448fedea8f', false);
-  handleChangeSw5('4c661077-a9fa-47ef-bf60-79bce8d3c673', false);
-  handleChangeSw5('1da20807-9966-4c1b-ae47-8665c5c989d3', false);
-  handleChangeSw5('900dca1a-e53a-418c-82cc-5ebb8795e266', false);
-  handleChangeSw5('3c7fe2c1-cb3e-439a-a366-ec1c6238bb4b', false);
+  // handleChangeSw5('75cb6fc4-3fd9-4c60-a2ef-ba32cf97961f', false);
+  // handleChangeSw5('bd142373-4be7-4a22-ba7f-67c62520e419', false);
+  // handleChangeSw5('68695c4b-c4b3-4eef-bd06-0788f0b2b1e3', false);
+  // handleChangeSw5('06373972-8464-4920-a866-73448fedea8f', false);
+  // handleChangeSw5('4c661077-a9fa-47ef-bf60-79bce8d3c673', false);
+  // handleChangeSw5('1da20807-9966-4c1b-ae47-8665c5c989d3', false);
+  // handleChangeSw5('900dca1a-e53a-418c-82cc-5ebb8795e266', false);
+  // handleChangeSw5('3c7fe2c1-cb3e-439a-a366-ec1c6238bb4b', false);
+  console.log((access_token))
 
   }
 
@@ -223,7 +225,7 @@ function DashboardCard07() {
      
       
       >
-        <h2 className="font-semibold text-gray-800 dark:text-gray-100">Умный дом</h2>
+        <h2 className="font-semibold text-gray-800 dark:text-gray-100">Панель Умного дома</h2>
         <div>
         <Button onClick={handleClick} variant="contained">выключить все</Button>
         </div>

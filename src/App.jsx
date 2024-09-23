@@ -12,6 +12,7 @@ import './css/style.css';
 
 // Import pages
 import Dashboard from './pages/Dashboard';
+import DashboardHome from './pages/Dashboard home'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Routes>
 
         <Route  path="*" element={<Dashboard />} />
+        <Route  path="home" element={<DashboardHome />} />
 
       </Routes>
     </>
