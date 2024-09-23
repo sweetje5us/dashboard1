@@ -10,6 +10,7 @@ import DashboardCard04 from '../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../partials/dashboard/DashboardCard05';
 import DashboardCard06 from '../partials/dashboard/DashboardCard06';
 import DashboardCard07 from '../partials/dashboard/DashboardCard07';
+import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 
 
 
@@ -52,7 +53,8 @@ function Dashboard() {
               {/* Line chart (Acme Advanced) */}
               <DashboardCard02 />
               {/* Line chart (Acme Professional) */}
-              {/* <DashboardCard03 /> */}
+              <DashboardCard03 />
+              <DashboardCard08 />
               {/* Bar chart (Direct vs Indirect) */}
               <DashboardCard04 />
               {/* Line chart (Real Time Value) */}
@@ -61,8 +63,8 @@ function Dashboard() {
               <DashboardCard06 />
               {/* Table (Top Channels) */}
               <DashboardCard07 />
-              {/* Line chart (Sales Over Time)
-              <DashboardCard08 />
+       
+              
               {/* Stacked bar chart (Sales VS Refunds) */}
               {/* <DashboardCard09 /> */}
               {/* Card (Customers) */}

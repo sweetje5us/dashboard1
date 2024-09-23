@@ -25,6 +25,62 @@ import token from '../../utils/token.json'
 
 const token_uk=token.token_uk;
 
+function getDomRu(){
+  const myHeaders = new Headers();
+myHeaders.append("accept", "application/json, text/plain, */*");
+myHeaders.append("accept-language", "ru,en;q=0.9,la;q=0.8");
+myHeaders.append("agreementnumber", "590028191360");
+myHeaders.append("authorization", "Bearer eyAiYWxnIjogIlNIMSIsICJ0eXAiOiAiSldUIiwgImsiOiAiMzAiIH0.4Fpcc4HHmfQ9Lgh8Rew_XN_QNWdyuGA7_AkxxLtHcASEEEmBnw5g7nisL40g9HXUEof0HO881tzLfvhAZ2CP1Bw_Ekr4HrkoCA_567uW28RzP5Inxkmf1yaGEljE3NTt0Ko13vE76z5vQ5jT5okaBNNUQZy9vp8MI1Z2JWvG-xykMJ9M2ORAO3IvvY534ovnfMr4T6kIAMBXlCowLV0RHN3OllreLKzeQnuvi5EdYTRJWiYFkzYjRGrEcqxWww4cRPiiUPk306XmBTRFbu4szJxmBwY7fkVh9r_nNl9a4JameSQsKa1pEMWmPMLJemZM.REJENzZGOEFCMjk1RDVFQkI2QzMyMjFCOUM2MTk5Mjk2NkJDMjRBNA");
+myHeaders.append("origin", "https://perm.dom.ru");
+myHeaders.append("priority", "u=1, i");
+myHeaders.append("providerid", "47");
+myHeaders.append("referer", "https://perm.dom.ru/");
+myHeaders.append("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"YaBrowser\";v=\"24.7\", \"Yowser\";v=\"2.5\"");
+myHeaders.append("sec-ch-ua-mobile", "?0");
+myHeaders.append("sec-ch-ua-platform", "\"Windows\"");
+myHeaders.append("sec-fetch-dest", "empty");
+myHeaders.append("sec-fetch-mode", "cors");
+myHeaders.append("sec-fetch-site", "same-site");
+myHeaders.append("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 YaBrowser/24.7.0.0 Safari/537.36");
+myHeaders.append("x-requested-with", "XMLHttpRequest");
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow"
+};
+const [userData, setUserData] = useState([]);
+  useEffect(() => {
+fetch("http://192.168.0.20:8088/https://api-profile.web-api.dom.ru/v2/payments/period-structure?dateFrom=21.09.2024&newApi=1", requestOptions)
+.then((response) => response.json())
+.then((result) => setUserData(result))
+.catch((error) => console.error(error));
+  }, []
+  );
+
+if (userData.headerInfo){
+return(
+  <div>
+    <div>
+    
+    Домашний интернет - оплачено до {userData.dateTo}
+    </div>
+    <div>
+    
+    {userData.headerInfo.tariffName} - {userData.periodPayments.paymentsSum} руб.
+    </div>
+    <Link href='https://perm.dom.ru/lk'>Ссылка на оплату
+  </Link>
+
+  
+  
+</div>
+ 
+)
+}
+
+}
+
 function sendTask(task){
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -256,7 +312,7 @@ function BasicTabs() {
       <CustomTabPanel value={value} index={2}>
 
       {getInvoice()}
-     
+     {getDomRu()}
       
       </CustomTabPanel>
     </Box>
