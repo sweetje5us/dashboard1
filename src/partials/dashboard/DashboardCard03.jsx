@@ -39,12 +39,13 @@ function getBus(e){
     .then((result) => setUserData(result.routeTypes[0].routes[0].vehicles[e]))
     .catch((error) => console.error(error));
   }, []);
-  if (userData.arrivalTime != undefined){
+  if (userData){
+  if (userData.arrivalMinutes){
     
   return(
     <div>
     <div>
-      {userData.arrivalTime}
+      {userData.arrivalTime} 
       
   </div>
   <div>
@@ -64,18 +65,45 @@ function getBus(e){
     ) 
   }
 }
+}
 
 
 
 
 function getTaxi(){
-
+  const [userData, setUserData] = useState([]);
+  const myHeaders = new Headers();
+  myHeaders.append("Cookie", "_yasc=RTtLR5yDzndA6NivFNzo111bHQibk+EceKkXbOwdczO3rQ23vZ9NNJokThfJsLCC");
+  
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+  useEffect(() => {
+  fetch("https://taxi-routeinfo.taxi.yandex.net/taxi_info?rll=56.271461, 57.999168~ 56.393494, 58.127407&clid=ak240826&apikey=xDGWEySAcXVpMdfUSVRswuxouWbmkrwAkugAy&class=econom,vip&req=check,yellowcarnumber\n", requestOptions)
+    .then((response) => response.json())
+    .then((result) => setUserData(result))
+    .catch((error) => console.error(error));
+  }, []);
+  if(userData){
+  if(userData.options){
   return(
+   <div>
+    От Чернышевского 20 до Лоцманская 17а:
+ <div>
+      Эконом - {userData.options[0].price_text}
+    </div>
     <div>
-      
-  </div>
+      Комфорт - {userData.options[1].price_text}
+    </div>
+   </div>
+   
+   
    
   )
+}
+  }
 
 }
 

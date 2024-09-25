@@ -63,7 +63,7 @@ return(
   <div>
     <div>
     
-    Домашний интернет - оплачено до {userData.dateTo}
+    Домашний интернет Dom.ru - оплачено до {userData.dateTo}
     </div>
     <div>
     

@@ -34,6 +34,7 @@ function Clip({ url }) {
      loading="visible" 
      autoPlay
      loop
+     muted
      controls
      playsInline
      src={url} 
