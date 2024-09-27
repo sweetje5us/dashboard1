@@ -12,6 +12,11 @@ import DashboardCard06 from '../partials/dashboard/DashboardCard06';
 import DashboardCard07 from '../partials/dashboard/DashboardCard07';
 import DashboardCard08 from '../partials/dashboard/DashboardCard08';
 
+import DashboardCard10 from '../partials/dashboard/DashboardCard10';
+
+import DashboardCard12 from '../partials/dashboard/DashboardCard12';
+
+
 
 
 function Dashboard() {
@@ -72,7 +77,7 @@ function Dashboard() {
               {/* Card (Reasons for Refunds) */}
               {/* <DashboardCard11 /> */}
               {/* Card (Recent Activity) */}
-              {/* <DashboardCard12 /> */}
+              <DashboardCard12 />
               {/* Card (Income/Expenses) */}
               {/* <DashboardCard13 /> */}
               

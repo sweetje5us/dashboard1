@@ -49,8 +49,8 @@ function DashboardHome() {
 
            
             
-              <DashboardCard07 />
               <DashboardCard04 />
+             
               
             </div>
 

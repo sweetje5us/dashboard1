@@ -13,6 +13,8 @@ import './css/style.css';
 // Import pages
 import Dashboard from './pages/Dashboard';
 import DashboardHome from './pages/Dashboard home'
+import DashboardDomofon from "./pages/Dashboard domofon"
+import DashboardFeed from "./pages/Dashboard feed"
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
 
         <Route  path="*" element={<Dashboard />} />
         <Route  path="home" element={<DashboardHome />} />
+        <Route  path="domofon" element={<DashboardDomofon />} />
+        <Route  path="feed" element={<DashboardFeed/>} />
 
       </Routes>
     </>

@@ -38,7 +38,7 @@ function getBus(e){
     .then((response) => response.json())
     .then((result) => setUserData(result.routeTypes[0].routes[0].vehicles[e]))
     .catch((error) => console.error(error));
-  }, []);
+  }, []); 
   if (userData){
   if (userData.arrivalMinutes){
     
@@ -124,6 +124,10 @@ function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
+        <div>
+        Остановка ул.Чернышевского
+        </div>
+        
         14 Автобус:
       {getBus(0)}
       {getBus(1)}
